@@ -10,6 +10,7 @@ How to use
 ```bash
 git clone https://github.com/jvdamgaard/nodejs-boilerplate.git
 git remote add upstream https://github.com/jvdamgaard/nodejs-boilerplate.git
+npm install
 ```
 
 ### Get updates
