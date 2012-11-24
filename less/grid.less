@@ -1,0 +1,244 @@
+/*
+*
+*  Inspired by Golden Grid System (1.01)	<http://goldengridsystem.com/>
+*	
+*/
+
+
+//
+// Important numbers
+//
+	@em:@font-size*1em;
+
+
+/*
+*
+*  Simple fluid media
+*
+*/
+
+img, input {
+	width: 100%;
+}
+
+
+/*
+*
+*	Zoomable baseline grid
+*	type size presets
+*
+*/
+
+body {
+	/* 16px / 24px */
+	font-size: @font-size / 16 * 1em; 
+	line-height: @line / @em;
+}
+
+.small {
+	/* 13px / 18px */
+	font-size: (@font-size*0.8125) / @em;
+	line-height: (@line*0.75) / (@font-size*0.8125) * 1em;
+}
+
+.normal, h3 {
+	/* 16px / 24px */
+	font-size: @font-size / @em;
+	line-height: @line / @em; /* 24 */
+}
+
+.large, h2, h1 {
+	/* 26 / 36px */
+	font-size: 26 / @em;
+	line-height: (@line*1.5) / 26 * 1em;
+}
+
+.huge {
+	/* 42px / 48px */
+	font-size: 42 / @em;
+	line-height: (@line*2) / 42 * 1em;
+}
+
+.massive {
+	/* 68px / 72px */
+	font-size: 68 / @em;
+	line-height: (@line*3) / 68 * 1em;
+}
+
+.gigantic {
+	/* 110px / 120px */
+	font-size: 110 / @em;
+	line-height: (@line*5) / 110 * 1em;
+}
+
+
+/*
+*
+*  Four-column grid active
+*  -----------------------
+*
+*/
+
+header {
+	margin: 0 @column;
+}
+
+h1, h2 {
+	margin: (24/26*1em) 0 (36/26*1em);
+}
+
+h2 {
+	font-weight: normal;
+}
+
+h3 {
+	margin: (24/@em) 0 (24/@em);
+}
+
+.ie body {
+	width: 640/@em;
+	margin: 0 auto;
+	font-size: (@font-size + 1) / @em;
+}
+
+.ie h1 {
+	.huge();
+	margin: (48/42*1em) 0 (24/42*1em);
+}
+
+.row {
+	margin: 0 1em/2;
+	.clearfix;
+	.row {
+		margin: 0 -1em/2;
+	}
+}
+	
+.column, .columns {
+	padding: 0 1em/2;
+	float: left;
+	height: 100%;
+
+	// Cols
+	&.one { 	width: @column*4*1; }
+	&.two { 	width: @column*4*2; }
+	&.three { 	width: @column*4*3; }
+	&.four { 	width: @column*4*4; }
+
+	// Offset
+	&.leftOffsetByOne { 	margin-left: @column*4*1; }
+	&.leftOffsetByTwo { 	margin-left: @column*4*2; }
+	&.leftOffsetByThree { 	margin-left: @column*4*3; }
+	&.rightOffsetByOne { 	margin-right: @column*4*1; }
+	&.rightOffsetByTwo { 	margin-right: @column*4*2; }
+	&.rightOffsetByThree { 	margin-right: @column*4*3; }
+
+	// Nested columns
+	&.three {
+		.one { 	width: 100%/3*1; }
+		.two { 	width: 100%/3*2; }
+		.leftOffsetByOne { 	margin-left: 100%/3*1; }
+		.leftOffsetByTwo { 	margin-left: 100%/3*2; }
+		.rightOffsetByOne { 	margin-right: 100%/3*1; }
+		.rightOffsetByTwo { 	margin-right: 100%/3*2; }
+	}
+	&.two {
+		.one { 	width: 100%/2*1; }
+		.leftOffsetByOne { 	margin-left: 100%/2*1; }
+		.rightOffsetByOne { 	margin-right: 100%/2*1; }
+	}
+}
+
+
+/*
+*
+*  Eight-column grid active
+*  ------------------------
+*	
+*/
+
+/* @media screen and (min-width: 720px) */
+@media screen and (min-width: 45em) {
+	
+}
+
+
+/*
+*
+*  Sixteen-column grid active
+*  --------------------------
+*	
+*/
+
+/* @media screen and (min-width: 1440px) */
+@media screen and (min-width: 90em) {
+	
+}
+
+// Gridhelper used with js
+#grid {
+	position: fixed;
+	width: 100%;
+	height: 0;
+	top: 0;
+	left: 0;
+	z-index: -100;
+	white-space: nowrap;
+	overflow: hidden;
+	.row, .column, .columns {
+		height: 100%;
+	}
+	.column.one {
+		.transition(~"all 500ms ease-in-out");
+		width: 100%/16;
+		padding: 0;
+
+		&:nth-child(4n+1) {
+			padding-left: 1em/2;
+		}
+		&:nth-child(4n) {
+			padding-right: 1em/2;
+		}
+	}
+	.fill {
+		width: 100%;
+		height: 100%;
+		background: rgba(255,0,0,0);
+		.transition(~"background 1s ease-in-out");
+	}
+	&.active {
+		height: 100%;
+		z-index: 100;
+		.fill {
+			background: rgba(255,0,0,0.1);
+		}
+	}
+}
+
+// 8 columns
+@media screen and (min-width: 45em) {
+	#grid {
+		.column.one {
+			&:nth-child(4n+2) {
+				padding-right: 1em/2;
+			}
+			&:nth-child(4n+3) {
+				padding-left: 1em/2;
+			}
+		}
+	}
+}
+
+// 16 columns
+@media screen and (min-width: 90em) {
+	#grid {
+		.column.one {
+			&:nth-child(2n+1) {
+				padding-right: 1em/2;
+			}
+			&:nth-child(2n+2) {
+				padding-left: 1em/2;
+			}
+		}
+	}
+}
