@@ -1,0 +1,162 @@
+/*
+*
+*  Four-column grid active
+*  -----------------------
+*
+*/
+
+.row {
+  margin: 0 1em/2;
+  .clearfix;
+  .row {
+    margin: 0 -1em/2;
+  }
+}
+
+.column, .columns {
+  padding: 0 1em/2;
+  float: left;
+  height: 100%;
+
+  // Cols
+  &.one {   width: @column*4*1; }
+  &.two {   width: @column*4*2; }
+  &.three {   width: @column*4*3; }
+  &.four {  width: @column*4*4; }
+
+  // Offset
+  &.leftOffsetByOne {   margin-left: @column*4*1; }
+  &.leftOffsetByTwo {   margin-left: @column*4*2; }
+  &.leftOffsetByThree {   margin-left: @column*4*3; }
+  &.rightOffsetByOne {  margin-right: @column*4*1; }
+  &.rightOffsetByTwo {  margin-right: @column*4*2; }
+  &.rightOffsetByThree {  margin-right: @column*4*3; }
+
+  // Nested columns
+  &.three {
+    .one {  width: 100%/3*1; }
+    .two {  width: 100%/3*2; }
+    .leftOffsetByOne {  margin-left: 100%/3*1; }
+    .leftOffsetByTwo {  margin-left: 100%/3*2; }
+    .rightOffsetByOne {   margin-right: 100%/3*1; }
+    .rightOffsetByTwo {   margin-right: 100%/3*2; }
+  }
+  &.two {
+    .one {  width: 100%/2*1; }
+    .leftOffsetByOne {  margin-left: 100%/2*1; }
+    .rightOffsetByOne {   margin-right: 100%/2*1; }
+  }
+}
+
+
+/*
+*
+*  Eight-column grid active
+*  ------------------------
+*
+*/
+
+/* @media screen and (min-width: 720px) */
+@media screen and (min-width: 720px) {
+
+}
+
+
+/*
+*
+*  Sixteen-column grid active
+*  --------------------------
+*
+*/
+
+/* @media screen and (min-width: 1440px) */
+@media screen and (min-width: 1440px) {
+
+}
+
+
+
+/*
+*
+*  Show grid wih Ctrl+g i development mode
+*  --------------------------
+*
+*/
+
+#grid {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  white-space: nowrap;
+  overflow: hidden;
+  .row, .column, .columns {
+    height: 100%;
+  }
+  .column.one {
+    .transition(~"all 500ms ease-in-out");
+    width: 100%/16;
+    padding: 0;
+
+    &:nth-child(4n+1) {
+      padding-left: 1em/2;
+    }
+    &:nth-child(4n) {
+      padding-right: 1em/2;
+    }
+  }
+  .fill {
+    width: 100%;
+    height: 100%;
+    background: rgba(255,0,0,0);
+    .transition(~"background 1s ease-in-out");
+
+    .showHorizontalLine {
+        height: @line/2;
+        border-bottom: 1px solid rgba(255,0,0,0);
+    }
+
+  }
+  &.active {
+    z-index: 100;
+    .fill {
+      background: rgba(255,0,0,0.1);
+      .showHorizontalLine {
+        border-bottom: 1px dashed rgba(255,0,0,0.2);
+        &:nth-child(2n+1) {
+          border-bottom: 1px dotted rgba(255,0,0,0.1);
+        }
+      }
+    }
+  }
+}
+
+// 8 columns
+@media screen and (min-width: 720px) {
+  #grid {
+    .column.one {
+      &:nth-child(4n+2) {
+        padding-right: 1em/2;
+      }
+      &:nth-child(4n+3) {
+        padding-left: 1em/2;
+      }
+    }
+  }
+}
+
+// 16 columns
+@media screen and (min-width: 1440px) {
+  #grid {
+    .column.one {
+      &:nth-child(2n+1) {
+        padding-right: 1em/2;
+      }
+      &:nth-child(2n+2) {
+        padding-left: 1em/2;
+      }
+    }
+  }
+}

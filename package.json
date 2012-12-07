@@ -1,44 +1,40 @@
 {
-  "name": "application-name",
-  "description": "short description of the project",
-  "version": "0.1.0",
-  "author": "firstname lastname <your_email@fqdn.tld>",
+  "name": "foetexmobilweb",
+  "subdomain": "fmob",
+  "description": "new mobilesite for føtex",
+  "version": "0.1.17-9",
+  "author": "Jakob Damgaard <jvd.its@dsg.dk>",
   "contributors": [
     {
-      "name": "firstname lastname",
-      "email": "contributor1@fqdn.tld"
+      "name": "Jakob Damgaard",
+      "email": "jvd.its@dsg.dk"
     },
     {
-      "name": "firstname lastname",
-      "email": "contributor2@fqdn.tld"
+      "name": "Henrik Lange",
+      "email": "hnl.its@dsg.dk"
+    },
+    {
+      "name": "Rasmus Lauridsen",
+      "email": "rtl.its@dsg.dk"
     }
   ],
   "scripts": {
-    "start": "app.js",
-    "test": "mocha --recursive --reporter spec"
+    "start": "app.js"
   },
-  "keywords": [
-    "what",
-    "ever",
-    "you",
-    "like"
-  ],
-  "homepage": "https://github.com/your_login/your_repo",
+  "homepage": "http://fmob.jit.su",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your_login/your_repo.git"
-  },
-  "engine": {
-    "node": ">= 0.8.x"
+    "url": "https://github.com/jvdamgaard/foetexmobweb.git"
   },
   "main": "node.js",
   "dependencies": {
-    "express": "3.0.x",
-    "ejs": "*",
-    "less-middleware": "*",
-    "underscore": "1.4.x",
-    "async": "0.1.x",
-    "ejs": "~0.8.3"
+    "express": ">= 3.0.3",
+    "connect-assetmanager": ">= 0.0.28",
+    "uglify-js": ">= 2.2.1",
+    "less-middleware": ">= 0.1.9",
+    "ejs": ">= 0.8.3"
   },
-  "devDependencies": {}
+  "engines": {
+    "node": ">= 0.8.x"
+  }
 }

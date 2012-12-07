@@ -1,0 +1,33 @@
+#gradient {
+  .light() {
+    .gradient(~"linear-gradient(to bottom, #DDDDDD 0%,#c1c1c1 44%,#afafaf 55%,#999999 100%);");
+  }
+  .dark() {
+    .gradient(~"linear-gradient(to bottom, #464646 0%,#2b2b2b 44%,#191919 55%,#000000 100%);");
+  }
+  //.custom(@color) TODO: Make a customized gradient for brand color
+}
+
+#shadow {
+  #box {
+    .curly() {
+      &:before, &:after {
+        .box-shadow(~"0 15px 10px rgba(0, 0, 0, 0.5);");
+        .rotate(-5deg);
+        position: absolute;
+        left: 5px;
+        bottom: 16px;
+        z-index: -1;
+        width: 50%;
+        max-width: 300px;
+        height: 20%;
+        content: "";
+      }
+      &:after {
+        .rotate(5deg);
+        left: auto;
+        right: 5px;
+      }
+    }
+  }
+}

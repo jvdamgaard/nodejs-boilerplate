@@ -1,7 +1,4 @@
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
-
+//Touch events are from zepto/touch.js
 ;(function($){
   var touch = {},
     touchTimeout, tapTimeout, swipeTimeout,
@@ -45,21 +42,21 @@
       .bind('touchstart', function(e){
         now = Date.now()
         delta = now - (touch.last || now)
-        touch.el = $(parentIfText(e.touches[0].target))
+        touch.el = $(parentIfText(e.originalEvent.touches[0].target))
         touchTimeout && clearTimeout(touchTimeout)
-        touch.x1 = e.touches[0].pageX
-        touch.y1 = e.touches[0].pageY
+        touch.x1 = e.originalEvent.touches[0].pageX
+        touch.y1 = e.originalEvent.touches[0].pageY
         if (delta > 0 && delta <= 250) touch.isDoubleTap = true
         touch.last = now
         longTapTimeout = setTimeout(longTap, longTapDelay)
       })
       .bind('touchmove', function(e){
         cancelLongTap()
-        touch.x2 = e.touches[0].pageX
-        touch.y2 = e.touches[0].pageY
-        // If touch horizontal then prevents the event and it will suppress scrolling.
-        if(touch.x2 && Math.abs(touch.x1 - touch.x2) > 10)
+        touch.x2 = e.originalEvent.touches[0].pageX
+        touch.y2 = e.originalEvent.touches[0].pageY
+        if(touch.x2 && Math.abs(touch.x1-touch.x2)>10){
           e.preventDefault()
+        }
       })
       .bind('touchend', function(e){
          cancelLongTap()

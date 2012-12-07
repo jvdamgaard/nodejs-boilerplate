@@ -1,0 +1,134 @@
+/*
+ * How to use:
+ * - All positions and dimensions are based on the retina sprite
+ * - @x: x-position of base sprite image in retina mode
+ * - @y: y-position of base sprite image in retina mode
+ * - @width: width of base sprite image in retina mode
+ * - @height: height of base sprite image in retina mode
+ * - @position: sprite images position in containing element. Use top, right, bottom, left or two combined (e.g. top-right)
+ *
+ * Insert new image in sprite
+ * - Use sprite.fw.png for altering
+ * - place new image with min 2px space from other images
+ * - place base, hover and active on top of each ofter with 2px space
+ * - save flattenend png as sprite.retina.png
+ * - resize to 50% and save flattenend png as sprite.png
+ * - set total widt and height of sprite i retina mode i vars underneath
+ *
+ */
+
+// Position mixins
+.sprite(@x, @y, @width, @height, @position) when (@position = top) {
+  .sprite(@x, @y, @width, @height);
+  &:before {
+    top: 0;
+    margin-top: 0;
+  }
+}
+
+.sprite(@x, @y, @width, @height, @position) when (@position = top-right) {
+  .sprite(@x, @y, @width, @height);
+  &:before {
+    top: 0;
+    margin-top: 0;
+    left: auto;
+    margin-left: 0;
+    right: 0;
+  }
+}
+.sprite(@x, @y, @width, @height, @position) when (@position = right-top) {
+  .sprite(@x, @y, @width, top-right);
+}
+
+.sprite(@x, @y, @width, @height, @position) when (@position = right) {
+  .sprite(@x, @y, @width, @height);
+  &:before {
+    left: auto;
+    margin-left: 0;
+    right: 0;
+  }
+}
+
+.sprite(@x, @y, @width, @height, @position) when (@position = bottom-right) {
+  .sprite(@x, @y, @width, @height);
+  &:before {
+    top: auto;
+    margin-top: 0;
+    left: auto;
+    margin-left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+.sprite(@x, @y, @width, @height, @position) when (@position = right-bottom) {
+  .sprite(@x, @y, @width, bottom-right);
+}
+
+.sprite(@x, @y, @width, @height, @position) when (@position = bottom) {
+  .sprite(@x, @y, @width, @height);
+  &:before {
+    top: auto;
+    margin-top: 0;
+    bottom: 0;
+  }
+}
+
+.sprite(@x, @y, @width, @height, @position) when (@position = bottom-left) {
+  .sprite(@x, @y, @width, @height);
+  &:before {
+    top: auto;
+    margin-top: 0;
+    left: 0;
+    margin-left: 0;
+    bottom: 0;
+  }
+}
+.sprite(@x, @y, @width, @height, @position) when (@position = left-bottom) {
+  .sprite(@x, @y, @width, bottom-right);
+}
+
+.sprite(@x, @y, @width, @height, @position) when (@position = left) {
+  .sprite(@x, @y, @width, @height);
+  &:before {
+    left: 0;
+    margin-left: 0;
+  }
+}
+
+.sprite(@x, @y, @width, @height, @position) when (@position = top-left) {
+  .sprite(@x, @y, @width, @height);
+  &:before {
+    top: 0;
+    margin-top: 0;
+    left: 0;
+    margin-left: 0;
+  }
+}
+.sprite(@x, @y, @width, @height, @position) when (@position = left-top) {
+  .sprite(@x, @y, @width, bottom-right);
+}
+
+// Main mixin
+.sprite(@x, @y, @width, @height) {
+  position: relative;
+  &:before { // center align sprite image in container
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width: @width/2*1px;
+    height: @height/2*1px;
+    margin-left: @width/2/2*-1px;
+    margin-top: @height/2/2*-1px;
+    background-image: url('/img/sprite.png'); // TODO: should be a variable
+    background-repeat: no-repeat;
+    background-position: floor(@x/2)*-1px floor(@y/2)*-1px;
+    background-size: floor(@spriteRetinaWidth/2) floor(@spriteRetinaHeight/2);
+  }
+  &:hover:before {
+    background-position-y: floor((@y+@height+2)/2)*-1px;
+  }
+  &:active:before, &.active:before, &:focus:before {
+    background-position-y: floor((@y+2*@height+4)/2)*-1px;
+  }
+}
