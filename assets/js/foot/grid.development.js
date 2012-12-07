@@ -1,13 +1,15 @@
 //Show grid with CRTL+g
 (function(document) {
 
-  var isCtrl = false,
+  var isCtrl       = false,
       numberOfCols = 16,
       numberOfRows = 200,
       grid;
+
   document.onkeyup = function(e) {
     if(e.which == 17) isCtrl = false;
   };
+
   document.onkeydown = function(e) {
     if(e.which == 17) { // ctrl
       isCtrl = true;

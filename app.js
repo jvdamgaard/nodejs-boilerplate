@@ -2,14 +2,13 @@
  * Import modules
  */
 
-var express = require('express'),
-    routes = require('./routes'),
-    http = require('http'),
-    path = require('path'),
-    uglifyjs = require('uglify-js'),
-    assetmanager = require('connect-assetmanager');
-
-var app = express();
+var express      = require('express'),
+    routes       = require('./routes'),
+    http         = require('http'),
+    path         = require('path'),
+    uglifyjs     = require('uglify-js'),
+    assetmanager = require('connect-assetmanager'),
+    app          = express();
 
 /*
  * Connect-assetmanager settings
@@ -26,16 +25,18 @@ var app = express();
 
 // Use UglifyJS2 for smallest posible js files
 var assetUglify = function(file, path, index, isLast, callback) {
-  var result = uglifyjs.minify(file, {fromString: true});
-  callback(result.code);
-};
+    var result = uglifyjs.minify(file, {
+      fromString: true
+    });
+    callback(result.code);
+  };
 
 var assetOptions = {
-  js : {
+  js: {
     path: __dirname + '/assets/js/',
     files: {
       head: ['*'],
-      foot: [/\.vendor\.js$/i,/\.plugin\.js$/i,/\.module\.js$/i]
+      foot: [/\.vendor\.js$/i, /\.plugin\.js$/i, /\.module\.js$/i]
     },
     stale: true,
     postManipulate: {
@@ -56,7 +57,7 @@ var assetOptions = {
 };
 
 // Special for development environment
-app.configure('development', function(){
+app.configure('development', function() {
 
   assetOptions.js.stale = false;
   assetOptions.js.postManipulate = {};
@@ -72,11 +73,11 @@ app.configure('development', function(){
 var assetManagerGroups = {};
 
 // Javascript
-['head','foot'].forEach(function(type) {
-  assetManagerGroups['js-'+type] = {
-    'path': assetOptions.js.path+type+'/',
+['head', 'foot'].forEach(function(type) {
+  assetManagerGroups['js-' + type] = {
+    'path': assetOptions.js.path + type + '/',
     'files': assetOptions.js.files[type],
-    'route': new RegExp('js/'+type+'.js'),
+    'route': new RegExp('js/' + type + '.js'),
     'dataType': 'javascript',
     'stale': assetOptions.js.stale,
     'postManipulate': assetOptions.js.postManipulate,
@@ -84,7 +85,7 @@ var assetManagerGroups = {};
   };
 });
 
-app.configure(function(){
+app.configure(function() {
   app.set('port', process.env.PORT || 8080);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
@@ -109,12 +110,12 @@ app.configure(function(){
 
 });
 
-app.configure('development', function(){
+app.configure('development', function() {
   app.use(express.errorHandler());
 });
 
 app.get('/', routes.index);
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), function() {
   console.log("Express server listening on port " + app.get('port'));
 });
