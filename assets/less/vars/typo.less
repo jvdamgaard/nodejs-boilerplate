@@ -1,0 +1,59 @@
+body {
+  #typo > .normal;
+  #typo > .fontNormal;
+}
+
+h1 {
+  #typo > .biggest;
+  margin: @line 0 @line/2;
+}
+
+h2 {
+  #typo > .bigger;
+  margin: @line 0 @line/2;
+}
+
+h3, h4 {
+  #typo > .big;
+  margin: @line 0 @line/2;
+}
+
+p {
+  margin: 0 0 @line/2;
+}
+
+small {
+  #typo > .small;
+}
+
+a {
+  color: @lightFontColor;
+  text-decoration: underline;
+  &:hover {
+    color: @fontColor;
+  }
+}
+
+ul, ol {
+  margin: 0 0 @line/2 2em;
+  li {
+    margin-left: 2em;
+    &:before {
+      content: '-';
+      position: absolute;
+      margin-left: -2em;
+    }
+    ol, ul {
+      margin: @line/2 0;
+    }
+  }
+}
+ol { // Ordered list with: 1 => 1.1, 1.2 => 1.2.1 => ...
+  counter-reset: item;
+  li {
+    &:before {
+      content: counters(item, ".") " ";
+      counter-increment: item;
+    }
+  }
+}

@@ -1,9 +1,12 @@
-//Show grid with CRTL+g
+/*
+ * Show grid with CRTL+g
+ */
+
 (function(document) {
 
-  var isCtrl       = false,
-      numberOfCols = 16,
-      numberOfRows = 200,
+  var isCtrl        = false,
+      numberOfCols  = 16,
+      numberOfRows  = 200,
       grid;
 
   document.onkeyup = function(e) {
@@ -11,9 +14,8 @@
   };
 
   document.onkeydown = function(e) {
-    if(e.which == 17) { // ctrl
-      isCtrl = true;
-    }
+    if(e.which == 17) isCtrl = true; // ctrl
+
     if(e.which === 71 && isCtrl === true) { // ctrl+g
       if($('#grid').hasClass('active')) {
         $('#grid').removeClass('active');

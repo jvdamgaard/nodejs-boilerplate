@@ -120,15 +120,29 @@
     height: @height/2*1px;
     margin-left: @width/2/2*-1px;
     margin-top: @height/2/2*-1px;
-    background-image: url('/img/sprite.png'); // TODO: should be a variable
+    background-image: url(@spriteImage);
     background-repeat: no-repeat;
     background-position: floor(@x/2)*-1px floor(@y/2)*-1px;
     background-size: floor(@spriteRetinaWidth/2) floor(@spriteRetinaHeight/2);
   }
+}
+
+.spriteBtn(@x, @y, @width, @height, @position) {
+  .sprite(@x, @y, @width, @height, @position);
+  .spriteBtnHover();
+}
+
+.spriteBtn(@x, @y, @width, @height) {
+  .sprite(@x, @y, @width, @height);
+  .spriteBtnHover();
+}
+
+.spriteBtnHover() {
   &:hover:before {
     background-position-y: floor((@y+@height+2)/2)*-1px;
   }
   &:active:before, &.active:before, &:focus:before {
     background-position-y: floor((@y+2*@height+4)/2)*-1px;
   }
+
 }
