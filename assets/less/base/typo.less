@@ -5,53 +5,40 @@
 *
 */
 
-@font-face {
-  .font-face('museo','/font/Museo_Slab_300');
-}
-@font-face {
-  .font-face('museo','/font/Museo_Slab_500');
-  font-weight: bold;
+body {
+  #typo > .normal;
+  #typo > #font > .normal;
 }
 
-#typo {
-  .fontNormal() {
-    font-family: Helmet, Freesans, sans-serif; //  Helvitica Neue on mac and Arial on Windows
-  }
+h1 {
+  #typo > .biggest;
+  #typo > #font > .header;
+  margin: @line 0 @line/2;
+}
 
-  .fontHeader() {
-    font-family: museo;
-  }
+h2 {
+  #typo > .bigger;
+  #typo > #font > .header;
+  margin: @line 0 @line/2;
+}
 
-  .setBaseTypo(@size, @lineHeight) {
-    @baseCalcSize: 15;
-    @baseCalcLine: 24;
+h3, h4 {
+  #typo > .big;
+  margin: @line 0 @line/2;
+}
 
-    @fontSizeRatio: @size/@baseCalcSize;
-    @lineHeightRatio: @lineHeight/@baseCalcLine;
+p {
+  margin: 0 0 @line/2;
+}
 
-    font-size: 1em*@fontSizeRatio;
-    line-height: @lineHeightRatio*@line+0px;
-  }
+small {
+  #typo > .small;
+}
 
-  .small() {
-    .setBaseTypo(13,18);
-  }
-  .normal() {
-    font-size: @fontSize*1px; // 15px
-    line-height: @line; // 24px
-  }
-  .big() {
-    .setBaseTypo(15,24);
-    font-weight: bold;
-  }
-  .bigger() {
-    .setBaseTypo(22,36);
-    .fontHeader();
-    font-weight: bold;
-  }
-  .biggest() {
-    .setBaseTypo(32,36);
-    .fontHeader();
-    font-weight: normal;
+a {
+  color: @lightFontColor;
+  text-decoration: underline;
+  &:hover {
+    color: @fontColor;
   }
 }

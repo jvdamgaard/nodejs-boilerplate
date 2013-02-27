@@ -1,61 +1,51 @@
-body {
-  #typo > .normal;
-  #typo > .fontNormal;
+
+@font-face {
+  //.font-face('header','/font/blanch_condensed_light');
+  // .font-face('header','/font/bariol_regular');
+  .font-face('header','/font/nexa_light');
+}
+@font-face {
+  //.font-face('header','/font/blanch_condensed');
+  .font-face('header','/font/nexa_bold');
+  font-weight: bold;
 }
 
-h1 {
-  #typo > .biggest;
-  margin: @line 0 @line/2;
-}
+#typo {
 
-h2 {
-  #typo > .bigger;
-  margin: @line 0 @line/2;
-}
-
-h3, h4 {
-  #typo > .big;
-  margin: @line 0 @line/2;
-}
-
-p {
-  margin: 0 0 @line/2;
-}
-
-small {
-  #typo > .small;
-}
-
-a {
-  color: @lightFontColor;
-  text-decoration: underline;
-  &:hover {
-    color: @fontColor;
-  }
-}
-
-#content {
-  ul, ol {
-    margin: 0 0 @line/2 2em;
-    li {
-      margin-left: 2em;
-      &:before {
-        content: '-';
-        position: absolute;
-        margin-left: -2em;
-      }
-      ol, ul {
-        margin: @line/2 0;
-      }
+  #font {
+    .normal() {
+      font-family: Helmet, Freesans, sans-serif; //  Helvitica Neue on mac and Arial on Windows
+    }
+    .header() {
+      font-family: 'header';
     }
   }
-  ol { // Ordered list with: 1 => 1.1, 1.2 => 1.2.1 => ...
-    counter-reset: item;
-    li {
-      &:before {
-        content: counters(item, ".") " ";
-        counter-increment: item;
-      }
-    }
+
+  .setBaseTypo(@size, @lineHeight) {
+    @baseCalcSize: 15;
+    @baseCalcLine: 24;
+
+    @fontSizeRatio: @size/@baseCalcSize;
+    @lineHeightRatio: @lineHeight/@baseCalcLine;
+
+    font-size: 1em*@fontSizeRatio;
+    line-height: @lineHeightRatio*@line+0px;
+  }
+
+  .small() {
+    #typo > .setBaseTypo(13,18);
+  }
+  .normal() {
+    font-size: @fontSize*1px; // 15px
+    line-height: @line; // 24px
+  }
+  .big() {
+    #typo > .setBaseTypo(15,24);
+  }
+  .bigger() {
+    #typo > .setBaseTypo(22,36);
+  }
+  .biggest() {
+    #typo > .setBaseTypo(32,36);
   }
 }

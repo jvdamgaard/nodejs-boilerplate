@@ -1,3 +1,9 @@
+# Compiled files in boilerplate #
+######################
+public/css
+public/img
+public/js
+
 # Nodejs #
 ######################
 lib-cov

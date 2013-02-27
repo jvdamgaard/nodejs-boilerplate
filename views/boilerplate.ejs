@@ -8,8 +8,6 @@
   <title><%= title%></title>
   <meta name="description" content="">
 
-  <meta name="robots" content="noindex, nofollow">
-
   <link rel="stylesheet" href="<%= cache['/css/style.css'] %>">
   <script src="<%= cache['/js/head.js'] %>"></script>
 </head>
@@ -23,31 +21,17 @@
     <% }); %>
   </div>
   <% } %>
-
-  <%-body -%>
-
+  <div class="row">
+    <%-body -%>
+  </div>
   <script>
-  var scripts = [];
-
-  <% // Load jQuery as the first javascript element
-  if (production) {
-    %>scripts.push('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');<%
-  } else {
-    %>scripts.push('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js');<%
-  }
-  %>
-
-  scripts.push('<%= cache["/js/global.js"] %>');
-
-  <% // Load development javascript when not in production
-  if (!production) {
-    %>scripts.push('<%= cache["/js/development.js"] %>');<%
-  }
-  %>
-  scripts = scripts.concat(ModuleLoader.modules);
-
-  Modernizr.load(scripts);
-
+    jsRefs.unshift('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js','<%= cache["/js/global.js"] %>');
+    <% // Load development javascript when not in production
+    if (!production) {
+      %>jsRefs.push('<%= cache["/js/development.js"] %>');<%
+    }
+    %>
+    Modernizr.load(jsRefs);
   </script>
 </body>
 </html>
