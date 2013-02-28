@@ -5,46 +5,65 @@
 *
 */
 
+@column: 100% / 16;
+
+// Mixins
+#grid {
+  .width(@cols, @base) {
+    width: 16/@base * @cols * @column;
+  }
+  .leftOffset(@cols, @base) {
+    margin-left: 16/@base * @cols * @column;
+  }
+  .rightOffset(@cols, @base) {
+    margin-right: 16/@base * @cols * @column;
+  }
+}
+
 .row {
-  margin: 0 1em/2;
+  margin: 0 @line/2;
   .clearfix;
   .row {
-    margin: 0 -1em/2;
+    margin: 0 -@line/2;
   }
 }
 
 .column, .columns {
-  padding: 0 1em/2;
-  float: left;
-  display: block;
-  height: 100%;
+  padding : 0 @line/2;
+  float   : left;
+  display : block;
+  height  : 100%;
 
   // Cols
-  &.one {   width: @column*4*1; }
-  &.two {   width: @column*4*2; }
-  &.three {   width: @column*4*3; }
-  &.four {  width: @column*4*4; }
+  &.one {                 #grid > .width(1,4); }
+  &.two {                 #grid > .width(2,4); }
+  &.three {               #grid > .width(3,4); }
+  &.four {                #grid > .width(4,4); }
 
   // Offset
-  &.leftOffsetByOne {   margin-left: @column*4*1; }
-  &.leftOffsetByTwo {   margin-left: @column*4*2; }
-  &.leftOffsetByThree {   margin-left: @column*4*3; }
-  &.rightOffsetByOne {  margin-right: @column*4*1; }
-  &.rightOffsetByTwo {  margin-right: @column*4*2; }
-  &.rightOffsetByThree {  margin-right: @column*4*3; }
+  &.leftOffsetByOne {     #grid > .leftOffset(1,4); }
+  &.leftOffsetByTwo {     #grid > .leftOffset(2,4); }
+  &.leftOffsetByThree {   #grid > .leftOffset(3,4); }
+
+  &.rightOffsetByOne {    #grid > .rightOffset(1,4); }
+  &.rightOffsetByTwo {    #grid > .rightOffset(2,4); }
+  &.rightOffsetByThree {  #grid > .rightOffset(3,4); }
 
   // Nested columns
   &.three {
-    .one {  width: 100%/3*1; }
-    .two {  width: 100%/3*2; }
-    .leftOffsetByOne {  margin-left: 100%/3*1; }
-    .leftOffsetByTwo {  margin-left: 100%/3*2; }
+    .one {                width       : 100%/3*1; }
+    .two {                width       : 100%/3*2; }
+
+    .leftOffsetByOne {    margin-left : 100%/3*1; }
+    .leftOffsetByTwo {    margin-left : 100%/3*2; }
     .rightOffsetByOne {   margin-right: 100%/3*1; }
     .rightOffsetByTwo {   margin-right: 100%/3*2; }
   }
+
   &.two {
-    .one {  width: 100%/2*1; }
-    .leftOffsetByOne {  margin-left: 100%/2*1; }
+    .one {                width       : 100%/2*1; }
+
+    .leftOffsetByOne {    margin-left : 100%/2*1; }
     .rightOffsetByOne {   margin-right: 100%/2*1; }
   }
 }
@@ -58,7 +77,27 @@
 */
 
 /* @media screen and (min-width: 720px) */
-@media screen and (min-width: 720px) {
+@media screen and (min-width: @breakpoint8) {
+
+  .column, .columns {
+    &.fixed {
+
+      // Cols
+      &.one {                 #grid > .width(1,8); }
+      &.two {                 #grid > .width(2,8); }
+      &.three {               #grid > .width(3,8); }
+      &.four {                #grid > .width(1,8); }
+
+      // Offset
+      &.leftOffsetByOne {     #grid > .leftOffset(1,8); }
+      &.leftOffsetByTwo {     #grid > .leftOffset(2,8); }
+      &.leftOffsetByThree {   #grid > .leftOffset(3,8); }
+
+      &.rightOffsetByOne {    #grid > .rightOffset(1,8); }
+      &.rightOffsetByTwo {    #grid > .rightOffset(2,8); }
+      &.rightOffsetByThree {  #grid > .rightOffset(3,8); }
+    }
+  }
 
 }
 
@@ -71,7 +110,46 @@
 */
 
 /* @media screen and (min-width: 1440px) */
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: @breakpoint16) {
+
+  .column, .columns {
+    &.fixed {
+
+      // Cols
+      &.one {                 #grid > .width(1,16); }
+      &.two {                 #grid > .width(2,16); }
+      &.three {               #grid > .width(3,16); }
+      &.four {                #grid > .width(4,16); }
+
+      // Offset
+      &.leftOffsetByOne {     #grid > .leftOffset(1,16); }
+      &.leftOffsetByTwo {     #grid > .leftOffset(2,16); }
+      &.leftOffsetByThree {   #grid > .leftOffset(3,16); }
+
+      &.rightOffsetByOne {    #grid > .rightOffset(1,16); }
+      &.rightOffsetByTwo {    #grid > .rightOffset(2,16); }
+      &.rightOffsetByThree {  #grid > .rightOffset(3,16); }
+    }
+
+    &.semifixed {
+
+      // Cols
+      &.one {                 #grid > .width(2,16); }
+      &.two {                 #grid > .width(4,16); }
+      &.three {               #grid > .width(6,16); }
+      &.four {                #grid > .width(8,16); }
+
+      // Offset
+      &.leftOffsetByOne {     #grid > .leftOffset(2,16); }
+      &.leftOffsetByTwo {     #grid > .leftOffset(4,16); }
+      &.leftOffsetByThree {   #grid > .leftOffset(6,16); }
+
+      &.rightOffsetByOne {    #grid > .rightOffset(2,16); }
+      &.rightOffsetByTwo {    #grid > .rightOffset(4,16); }
+      &.rightOffsetByThree {  #grid > .rightOffset(6,16); }
+    }
+  }
+
 
 }
 
@@ -102,10 +180,10 @@
     padding: 0;
 
     &:nth-child(4n+1) {
-      padding-left: 1em/2;
+      padding-left: @line/2;
     }
     &:nth-child(4n) {
-      padding-right: 1em/2;
+      padding-right: @line/2;
     }
   }
   .fill {
@@ -135,28 +213,28 @@
 }
 
 // 8 columns
-@media screen and (min-width: 720px) {
+@media screen and (min-width: @breakpoint8) {
   #grid {
     .column.one {
       &:nth-child(4n+2) {
-        padding-right: 1em/2;
+        padding-right: @line/2;
       }
       &:nth-child(4n+3) {
-        padding-left: 1em/2;
+        padding-left: @line/2;
       }
     }
   }
 }
 
 // 16 columns
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: @breakpoint16) {
   #grid {
     .column.one {
       &:nth-child(2n+1) {
-        padding-right: 1em/2;
+        padding-right: @line/2;
       }
       &:nth-child(2n+2) {
-        padding-left: 1em/2;
+        padding-left: @line/2;
       }
     }
   }
