@@ -6,7 +6,8 @@ var express     = require('express'),
     http        = require('http'),
     path        = require('path'),
     engine      = require('ejs-locals'),
-    h5bp        = require('./lib/h5bp'),
+    // h5bp        = require('./lib/h5bp'),
+    h5bp        = require('h5bp'),
     routes      = require('./routes'),
     config      = require('./config');
 
@@ -39,17 +40,16 @@ app.configure(function() {
   });
 
   app.use(assetManager.middleware());
-  app.use(express.compress());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(h5bp.middleware({
-    server: 'express',
-    www: 'supress',
-    cors: true,
-    compress: false
+  app.use(h5bp({
+    root: path.join(__dirname, 'public'),
+    www: false,
+    cors: true
   }));
+  app.use(express.compress());
   app.use(express.static(path.join(__dirname, 'public')));
 
 });

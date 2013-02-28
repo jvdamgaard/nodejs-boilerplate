@@ -26,7 +26,8 @@
     "mkdirp": "0.3.x",
     "crypto": "0.0.x",
     "async": "0.1.x",
-    "imagemagick": "0.1.x"
+    "imagemagick": "0.1.x",
+    "h5bp": "0.0.5"
   },
   "subdomain": "yourapp",
   "homepage": "http://your.domain.com",
