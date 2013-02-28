@@ -1,13 +1,19 @@
-@import "global/global.var.less";
-@import "base/grid.less";
-@import "base/master.less";
-@import "base/print.less";
-@import "base/typo.less";
+// vars
+@import "vars/global.less";
+
+// mixins
 @import "mixins/helpers.less";
 @import "mixins/layout.less";
 @import "mixins/lesshat.less";
 @import "mixins/sprites.less";
 @import "mixins/typo.less";
-@import "reset/custom.less";
+
+// css reset
 @import "reset/normalize.less";
-@import "vars/global.less";
+@import "reset/custom.less";
+
+// base style
+@import "base/grid.less";
+@import "base/master.less";
+@import "base/print.less";
+@import "base/typo.less";
