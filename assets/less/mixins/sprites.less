@@ -123,21 +123,21 @@
     background-image: url(@spriteImage);
     background-repeat: no-repeat;
     background-position: floor(@x/2)*-1px floor(@y/2)*-1px;
-    background-size: floor(@spriteRetinaWidth/2) floor(@spriteRetinaHeight/2);
+    background-size: floor(@sprite-retina-width/2) floor(@sprite-retina-height/2);
   }
 }
 
-.spriteBtn(@x, @y, @width, @height, @position) {
+.sprite-btn(@x, @y, @width, @height, @position) {
   .sprite(@x, @y, @width, @height, @position);
-  .spriteBtnHover();
+  .sprite-btn-hover();
 }
 
-.spriteBtn(@x, @y, @width, @height) {
+.sprite-btn(@x, @y, @width, @height) {
   .sprite(@x, @y, @width, @height);
-  .spriteBtnHover();
+  .sprite-btn-hover();
 }
 
-.spriteBtnHover() {
+.sprite-btn-hover() {
   &:hover:before {
     background-position-y: floor((@y+@height+2)/2)*-1px;
   }

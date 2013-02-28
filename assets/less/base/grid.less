@@ -12,10 +12,10 @@
   .width(@cols, @base) {
     width: 16/@base * @cols * @column;
   }
-  .leftOffset(@cols, @base) {
+  .left-offset(@cols, @base) {
     margin-left: 16/@base * @cols * @column;
   }
-  .rightOffset(@cols, @base) {
+  .right-offset(@cols, @base) {
     margin-right: 16/@base * @cols * @column;
   }
 }
@@ -35,36 +35,36 @@
   height  : 100%;
 
   // Cols
-  &.one {                 #grid > .width(1,4); }
-  &.two {                 #grid > .width(2,4); }
-  &.three {               #grid > .width(3,4); }
-  &.four {                #grid > .width(4,4); }
+  &.one {                    #grid > .width(1,4); }
+  &.two {                    #grid > .width(2,4); }
+  &.three {                  #grid > .width(3,4); }
+  &.four {                   #grid > .width(4,4); }
 
   // Offset
-  &.leftOffsetByOne {     #grid > .leftOffset(1,4); }
-  &.leftOffsetByTwo {     #grid > .leftOffset(2,4); }
-  &.leftOffsetByThree {   #grid > .leftOffset(3,4); }
+  &.left-offset-by-one {     #grid > .left-offset(1,4); }
+  &.left-offset-by-two {     #grid > .left-offset(2,4); }
+  &.left-offset-by-three {   #grid > .left-offset(3,4); }
 
-  &.rightOffsetByOne {    #grid > .rightOffset(1,4); }
-  &.rightOffsetByTwo {    #grid > .rightOffset(2,4); }
-  &.rightOffsetByThree {  #grid > .rightOffset(3,4); }
+  &.right-offset-by-one {    #grid > .right-offset(1,4); }
+  &.right-offset-by-two {    #grid > .right-offset(2,4); }
+  &.right-offset-by-three {  #grid > .right-offset(3,4); }
 
   // Nested columns
   &.three {
-    .one {                width       : 100%/3*1; }
-    .two {                width       : 100%/3*2; }
+    .one {                   width       : 100%/3*1; }
+    .two {                   width       : 100%/3*2; }
 
-    .leftOffsetByOne {    margin-left : 100%/3*1; }
-    .leftOffsetByTwo {    margin-left : 100%/3*2; }
-    .rightOffsetByOne {   margin-right: 100%/3*1; }
-    .rightOffsetByTwo {   margin-right: 100%/3*2; }
+    .left-offset-by-one {    margin-left : 100%/3*1; }
+    .left-offset-by-two {    margin-left : 100%/3*2; }
+    .right-offset-by-one {   margin-right: 100%/3*1; }
+    .right-offset-by-two {   margin-right: 100%/3*2; }
   }
 
   &.two {
-    .one {                width       : 100%/2*1; }
+    .one {                   width       : 100%/2*1; }
 
-    .leftOffsetByOne {    margin-left : 100%/2*1; }
-    .rightOffsetByOne {   margin-right: 100%/2*1; }
+    .left-offset-by-one {    margin-left : 100%/2*1; }
+    .right-offset-by-one {   margin-right: 100%/2*1; }
   }
 }
 
@@ -77,25 +77,25 @@
 */
 
 /* @media screen and (min-width: 720px) */
-@media screen and (min-width: @breakpoint8) {
+@media screen and (min-width: @breakpoint-8) {
 
   .column, .columns {
     &.fixed {
 
       // Cols
-      &.one {                 #grid > .width(1,8); }
-      &.two {                 #grid > .width(2,8); }
-      &.three {               #grid > .width(3,8); }
-      &.four {                #grid > .width(1,8); }
+      &.one {                    #grid > .width(1,8); }
+      &.two {                    #grid > .width(2,8); }
+      &.three {                  #grid > .width(3,8); }
+      &.four {                   #grid > .width(1,8); }
 
       // Offset
-      &.leftOffsetByOne {     #grid > .leftOffset(1,8); }
-      &.leftOffsetByTwo {     #grid > .leftOffset(2,8); }
-      &.leftOffsetByThree {   #grid > .leftOffset(3,8); }
+      &.left-offset-by-one {     #grid > .left-offset(1,8); }
+      &.left-offset-by-two {     #grid > .left-offset(2,8); }
+      &.left-offset-by-three {   #grid > .left-offset(3,8); }
 
-      &.rightOffsetByOne {    #grid > .rightOffset(1,8); }
-      &.rightOffsetByTwo {    #grid > .rightOffset(2,8); }
-      &.rightOffsetByThree {  #grid > .rightOffset(3,8); }
+      &.right-offset-by-one {    #grid > .right-offset(1,8); }
+      &.right-offset-by-two {    #grid > .right-offset(2,8); }
+      &.right-offset-by-three {  #grid > .right-offset(3,8); }
     }
   }
 
@@ -110,43 +110,43 @@
 */
 
 /* @media screen and (min-width: 1440px) */
-@media screen and (min-width: @breakpoint16) {
+@media screen and (min-width: @breakpoint-16) {
 
   .column, .columns {
     &.fixed {
 
       // Cols
-      &.one {                 #grid > .width(1,16); }
-      &.two {                 #grid > .width(2,16); }
-      &.three {               #grid > .width(3,16); }
-      &.four {                #grid > .width(4,16); }
+      &.one {                    #grid > .width(1,16); }
+      &.two {                    #grid > .width(2,16); }
+      &.three {                  #grid > .width(3,16); }
+      &.four {                   #grid > .width(4,16); }
 
       // Offset
-      &.leftOffsetByOne {     #grid > .leftOffset(1,16); }
-      &.leftOffsetByTwo {     #grid > .leftOffset(2,16); }
-      &.leftOffsetByThree {   #grid > .leftOffset(3,16); }
+      &.left-offset-by-one {     #grid > .left-offset(1,16); }
+      &.left-offset-by-two {     #grid > .left-offset(2,16); }
+      &.left-offset-by-three {   #grid > .left-offset(3,16); }
 
-      &.rightOffsetByOne {    #grid > .rightOffset(1,16); }
-      &.rightOffsetByTwo {    #grid > .rightOffset(2,16); }
-      &.rightOffsetByThree {  #grid > .rightOffset(3,16); }
+      &.right-offset-by-one {    #grid > .right-offset(1,16); }
+      &.right-offset-by-two {    #grid > .right-offset(2,16); }
+      &.right-offset-by-three {  #grid > .right-offset(3,16); }
     }
 
     &.semifixed {
 
       // Cols
-      &.one {                 #grid > .width(2,16); }
-      &.two {                 #grid > .width(4,16); }
-      &.three {               #grid > .width(6,16); }
-      &.four {                #grid > .width(8,16); }
+      &.one {                    #grid > .width(2,16); }
+      &.two {                    #grid > .width(4,16); }
+      &.three {                  #grid > .width(6,16); }
+      &.four {                   #grid > .width(8,16); }
 
       // Offset
-      &.leftOffsetByOne {     #grid > .leftOffset(2,16); }
-      &.leftOffsetByTwo {     #grid > .leftOffset(4,16); }
-      &.leftOffsetByThree {   #grid > .leftOffset(6,16); }
+      &.left-offset-by-One {     #grid > .left-offset(2,16); }
+      &.left-offset-by-Two {     #grid > .left-offset(4,16); }
+      &.left-offset-by-Three {   #grid > .left-offset(6,16); }
 
-      &.rightOffsetByOne {    #grid > .rightOffset(2,16); }
-      &.rightOffsetByTwo {    #grid > .rightOffset(4,16); }
-      &.rightOffsetByThree {  #grid > .rightOffset(6,16); }
+      &.right-offset-by-One {    #grid > .right-offset(2,16); }
+      &.right-offset-by-Two {    #grid > .right-offset(4,16); }
+      &.right-offset-by-Three {  #grid > .right-offset(6,16); }
     }
   }
 
@@ -192,7 +192,7 @@
     background: rgba(255,0,0,0);
     .transition(~"background 1s ease-in-out");
 
-    .showHorizontalLine {
+    .show-horizontal-line {
         height: @line/2;
         border-bottom: 1px solid rgba(255,0,0,0);
     }
@@ -202,7 +202,7 @@
     z-index: 100;
     .fill {
       background: rgba(255,0,0,0.1);
-      .showHorizontalLine {
+      .show-horizontal-line {
         border-bottom: 1px dashed rgba(255,0,0,0.2);
         &:nth-child(2n+1) {
           border-bottom: 1px dotted rgba(255,0,0,0.1);
@@ -213,7 +213,7 @@
 }
 
 // 8 columns
-@media screen and (min-width: @breakpoint8) {
+@media screen and (min-width: @breakpoint-8) {
   #grid {
     .column.one {
       &:nth-child(4n+2) {
@@ -227,7 +227,7 @@
 }
 
 // 16 columns
-@media screen and (min-width: @breakpoint16) {
+@media screen and (min-width: @breakpoint-16) {
   #grid {
     .column.one {
       &:nth-child(2n+1) {

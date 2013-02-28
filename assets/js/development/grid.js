@@ -33,7 +33,7 @@
   for(var i = 0; i < numberOfCols; i++) {
     grid += '<div class="one column"><div class="fill">';
     for(var j = 0; j < numberOfRows; j++) {
-      grid += '<div class="showHorizontalLine"></div>';
+      grid += '<div class="show-horizontal-line"></div>';
     }
     grid += '</div></div>';
   }
