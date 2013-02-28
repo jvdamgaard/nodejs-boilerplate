@@ -13,18 +13,18 @@ body {
 h1 {
   #typo > .biggest;
   #typo > #font > .header;
-  margin: @line 0 @line/2;
+  margin: @line/2 0 @line/2;
 }
 
 h2 {
   #typo > .bigger;
   #typo > #font > .header;
-  margin: @line 0 @line/2;
+  margin: @line 0 0;
 }
 
 h3, h4 {
   #typo > .big;
-  margin: @line 0 @line/2;
+  margin: @line 0 0;
 }
 
 p {
@@ -36,9 +36,9 @@ small {
 }
 
 a {
-  color: @lightFontColor;
+  color: @colorFontLight;
   text-decoration: underline;
   &:hover {
-    color: @fontColor;
+    color: @colorFont;
   }
 }
