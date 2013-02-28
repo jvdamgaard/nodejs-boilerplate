@@ -25,10 +25,13 @@
     <%-body -%>
   </div>
   <script>
-    jsRefs.unshift('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js','<%= cache["/js/global.js"] %>');
+    jsRefs.unshift('<%= cache["/js/global.js"] %>');
     <% // Load development javascript when not in production
     if (!production) {
-      %>jsRefs.push('<%= cache["/js/development.js"] %>');<%
+      %>jsRefs.unshift('<%= cache["/js/jquery.js"] %>');
+      jsRefs.push('<%= cache["/js/development.js"] %>');<%
+    } else {
+      %>jsRefs.unshift('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');<%
     }
     %>
     Modernizr.load(jsRefs);
