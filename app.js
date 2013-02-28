@@ -6,7 +6,6 @@ var express     = require('express'),
     http        = require('http'),
     path        = require('path'),
     engine      = require('ejs-locals'),
-    // h5bp        = require('./lib/h5bp'),
     h5bp        = require('h5bp'),
     routes      = require('./routes'),
     config      = require('./config');
@@ -32,9 +31,9 @@ app.configure(function() {
   // Vars in ejs
   app.use(function(req, res, next) {
     res.locals({
-      cache: assetManager.cache.frontend,
-      errors: assetManager.errors,
-      production: config.production
+      cache      : assetManager.cache.frontend,
+      errors     : assetManager.errors,
+      production : config.production
     });
     next();
   });
@@ -45,9 +44,9 @@ app.configure(function() {
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(h5bp({
-    root: path.join(__dirname, 'public'),
-    www: false,
-    cors: true
+    root : path.join(__dirname, 'public'),
+    www  : false,
+    cors : true
   }));
   app.use(express.compress());
   app.use(express.static(path.join(__dirname, 'public')));
