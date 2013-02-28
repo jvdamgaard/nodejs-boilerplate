@@ -1,58 +1,90 @@
-// Introduce Object.create on old js engines
-if(typeof Object.create !== "function") {
-  Object.create = function(o) {
-    function F() {}
-    F.prototype = o;
-    return new F();
+(function() {
+
+  var root = this;
+
+  // Create Prototpe object for inheritance use
+  var Prototype = {};
+
+  // Set properties on object
+  Prototype.set = function(key, value) {
+
+    // Maps a key, value set to this object
+    if (typeof key === 'string') {
+      this[key] = value;
+
+    // Maps all key,value setis in array to this object
+    } else if (key !== null && typeof key === 'object') {
+      var settings = key;
+      for (var i in settings) this[i] = settings[i];
+    }
+
+    return this;
   };
-}
 
-// Create global Class object for inheritance use
-var Class = {
-  'set':          function(key, o) {
-                    if (typeof key === 'string') {
-                      this[key] = o;
-                    } else if (key !== null && typeof key === 'object') {
-                      o = key;
-                      for (var k in o) this[k] = o[k];
-                    }
-                    return this;
-                  },
-  'create':       function(o) {
-                    var that = Object.create(this);
-                    if (typeof o === 'function') {
-                      o.call(that);
-                    } else if (typeof o === 'object') {
-                      that.set(o);
-                    }
-                    return that;
-                  },
-  'instanceOf':   function(o) {
-                    var proto = Object.getPrototypeOf(this);
-                    if (o) return (proto === o);
-                    return proto;
-                  },
-  'inheritsFrom': function(o) {
-                    var tree = [];
-                    var proto = this.instanceOf();
-                    while (proto.instanceOf) {
-                      if (o && proto === o) return true;
-                      tree.push(proto);
-                      proto = proto.instanceOf();
-                    }
-                    if (o) return false;
-                    return tree;
-                  }
-};
+  // Check/get parent
+  Prototype.instanceOf = function(proto) {
+    var parent = Object.getPrototypeOf(this);
 
-// Semantic helper functions
-function create(c, o) {
-  if (!c || !c.create) {
-    o = c;
-    c = Class;
-  }
-  return c.create(o);
-}
-function extend(c, o) {
-  return create(c, o);
-}
+    // Ignore Prototype
+    if (parent === Prototype) parent = undefined;
+
+    if (proto) return (proto === parent);
+
+    return parent;
+  };
+
+  // Check/get ancestors
+  Prototype.inheritsFrom = function(proto) {
+    var tree = [];
+    var parent = this.instanceOf();
+
+    while (parent) {
+
+      // Return booelean if proto is defined
+      if (proto && proto === parent) return true;
+
+      // Add ancestors to tree
+      tree.push(parent);
+
+      parent = parent.instanceOf();
+    }
+
+    // No match found for proto
+    if (proto) return false;
+
+    return tree;
+
+  };
+
+  // Create new instance for prototypal inheritance
+  root.create = function(proto, settings) {
+
+    // Rearrange attributes if proto don't inherit from Prototype: Use Prototype as standard proto
+    if (!proto || proto.instanceOf !== Prototype.instanceOf) {
+      settings = proto;
+      proto = Prototype;
+    }
+
+    // Create new object with proto as prototype
+    function O() {}
+    O.prototype = proto;
+    var that = new O();
+
+    // Bind properties to new object with function closure
+    if (typeof settings === 'function') {
+      settings.call(that);
+
+    // Map object to new object
+    } else if (typeof settings === 'object') {
+      that.set(settings);
+    }
+
+    return that;
+  };
+
+  // Semantic. Same as create()
+  root.extend = function(proto, settings) {
+    return create(proto, settings);
+  };
+
+}(this));
