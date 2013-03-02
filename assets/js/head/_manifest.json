@@ -1,6 +1,6 @@
 [
   "Modernizr.class.js",
-  "fix",
-  "inheritance",
+  "fix.helper",
+  "inheritance.plugin",
   "jsrefs"
 ]
