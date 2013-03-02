@@ -27,7 +27,6 @@
   <script>
     jsRefs.unshift('<%= cache["/js/master.js"] %>');
     <% if (!production) { %>
-      jsRefs.unshift('<%= cache["/js/vendor.js"] %>');
       jsRefs.push('<%= cache["/js/development.js"] %>');
     <% } else { %>
       jsRefs.unshift('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');

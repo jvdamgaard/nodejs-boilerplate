@@ -1,0 +1,16 @@
+{
+  "development.js": [
+    "development/jquery.js",
+    "development/grid.js"],
+  "head.js": [
+    "head/Modernizr.class.js",
+    "head/fix.helper.js",
+    "head/inheritance.plugin.js"],
+  "master.js": [
+    "master/FastClick.helper.js",
+    "master/Global.helper.js",
+    "master/MBP.helper.js",
+    "master/jquery.touch.plugin.js",
+    "master/touch.plugin.js",
+    "master/master.js"]
+}
