@@ -3,14 +3,14 @@
     "development/jquery.js",
     "development/grid.js"],
   "head.js": [
-    "head/Modernizr.class.js",
-    "head/fix.helper.js",
-    "head/inheritance.plugin.js"],
+    "head/Modernizr.js",
+    "head/fix.js",
+    "head/inheritance.js"],
   "master.js": [
-    "master/FastClick.helper.js",
-    "master/Global.helper.js",
-    "master/MBP.helper.js",
-    "master/jquery.touch.plugin.js",
-    "master/touch.plugin.js",
+    "master/FastClick.js",
+    "master/Global.js",
+    "master/MBP.js",
+    "master/jquery.touch.js",
+    "master/touch.js",
     "master/master.js"]
 }
