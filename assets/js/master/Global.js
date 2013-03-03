@@ -1,5 +1,5 @@
 // Static class for handling globa/common methods and variables
-var Global = create(Class, function() {
+var Global = create(function() {
 
   /*** Settings ***/
 

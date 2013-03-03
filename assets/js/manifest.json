@@ -5,7 +5,8 @@
   "head.js": [
     "head/Modernizr.js",
     "head/fix.js",
-    "head/inheritance.js"],
+    "head/inheritance.js",
+    "head/jsrefs.js"],
   "master.js": [
     "master/FastClick.js",
     "master/Global.js",
