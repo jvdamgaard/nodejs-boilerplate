@@ -171,8 +171,8 @@ var Global = create(function() {
     },
     set: function(el, propName, val) {
       var prefix = this.getPrefix(propName);
-      if (propName && el.style[propName]) {
-        el.style[propName] = val;
+      if (propName && el.style[prefix] !== undefined) {
+        el.style[prefix] = val;
         return true;
       }
       return false;
