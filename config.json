@@ -2,17 +2,16 @@
   "assets": {
     "less": {
       "source": "./assets/less/style.less",
-      "destination": "./public/css/style.css",
-      "rank": ["var", "mixin", "reset"]
+      "destination": "./public/css/style.css"
     },
     "img": {
       "source": "./assets/img",
-      "destination": "./public/img"
+      "destination": "./public/img",
+      "extensions": ["jpg", "jpeg", "png", "gif", "ico"]
     },
     "js": {
       "source": "./assets/js",
-      "destination": "./public/js",
-      "rank": ["vendor", "helper", "plugin", "class"]
+      "destination": "./public/js"
     }
   }
 }
