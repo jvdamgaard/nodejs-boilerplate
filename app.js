@@ -31,9 +31,8 @@ app.configure(function() {
   // Vars in ejs
   app.use(function(req, res, next) {
     res.locals({
-      cache      : assetManager.cache.frontend,
-      errors     : assetManager.errors,
-      production : config.production
+      production : config.production,
+      url        : assetManager.url
     });
     next();
   });

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+  <title><%= title%></title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="<%= url('/css/style.css') %>">
+  <script src="<%= url('/js/head.js') %>"></script>
+</head>
+<body>
+  <div class="row">
+    <%-body -%>
+  </div>
+  <script>
+    jsRefs.unshift('<%= url("/js/master.js") %>');
+    <% if (!production) { %>
+      jsRefs.unshift('<%= url("/js/development.js") %>');
+    <% } else { %>
+      jsRefs.unshift('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
+    <% } %>
+    Modernizr.load(jsRefs);
+  </script>
+</body>
+</html>
