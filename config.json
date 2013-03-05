@@ -5,8 +5,8 @@
       "destination": "./public/css/style.css"
     },
     "img": {
-      "source": "./assets/img",
-      "destination": "./public/img",
+      "source": "./assets/img/for-public",
+      "destination": "./public",
       "extensions": ["jpg", "jpeg", "png", "gif", "ico"]
     },
     "js": {
