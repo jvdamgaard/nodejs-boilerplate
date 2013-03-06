@@ -29,7 +29,7 @@
     }
   };
 
-  grid = '<div id="grid" class="active" style="height:722px"><div class="row">';
+  grid = '<div id="grid" style="height:722px"><div class="row">';
   for(var i = 0; i < numberOfCols; i++) {
     grid += '<div class="one column"><div class="fill">';
     for(var j = 0; j < numberOfRows; j++) {

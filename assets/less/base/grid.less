@@ -68,6 +68,14 @@
   }
 }
 
+.only-four-columns    { display: block; }
+.only-eight-columns   { display: none;  }
+.only-sixteen-columns { display: none;  }
+
+.not-four-columns     { display: none;  }
+.not-eight-columns    { display: block; }
+.not-sixteen-columns  { display: block; }
+
 
 /*
 *
@@ -76,8 +84,8 @@
 *
 */
 
-/* @media screen and (min-width: 720px) */
-@media screen and (min-width: @breakpoint-8) {
+/* @media screen and (min-width: 700px) */
+@media screen and (min-width: @breakpoint-eight-columns) {
 
   .column, .columns {
     &.fixed {
@@ -86,7 +94,7 @@
       &.one {                    #grid > .width(1,8); }
       &.two {                    #grid > .width(2,8); }
       &.three {                  #grid > .width(3,8); }
-      &.four {                   #grid > .width(1,8); }
+      &.four {                   #grid > .width(4,8); }
 
       // Offset
       &.left-offset-by-one {     #grid > .left-offset(1,8); }
@@ -99,6 +107,13 @@
     }
   }
 
+  .only-four-columns    { display: none;  }
+  .only-eight-columns   { display: block; }
+  .only-sixteen-columns { display: none;  }
+
+  .not-four-columns     { display: block; }
+  .not-eight-columns    { display: none;  }
+  .not-sixteen-columns  { display: block; }
 }
 
 
@@ -110,7 +125,7 @@
 */
 
 /* @media screen and (min-width: 1440px) */
-@media screen and (min-width: @breakpoint-16) {
+@media screen and (min-width: @breakpoint-sixteen-columns) {
 
   .column, .columns {
     &.fixed {
@@ -131,7 +146,7 @@
       &.right-offset-by-three {  #grid > .right-offset(3,16); }
     }
 
-    &.semifixed {
+    &.semi-fixed {
 
       // Cols
       &.one {                    #grid > .width(2,16); }
@@ -149,6 +164,14 @@
       &.right-offset-by-Three {  #grid > .right-offset(6,16); }
     }
   }
+
+  .only-four-columns    { display: none;  }
+  .only-eight-columns   { display: none;  }
+  .only-sixteen-columns { display: block; }
+
+  .not-four-columns     { display: block; }
+  .not-eight-columns    { display: block; }
+  .not-sixteen-columns  { display: none;  }
 
 
 }
@@ -213,7 +236,7 @@
 }
 
 // 8 columns
-@media screen and (min-width: @breakpoint-8) {
+@media screen and (min-width: @breakpoint-eight-columns) {
   #grid {
     .column.one {
       &:nth-child(4n+2) {
@@ -227,7 +250,7 @@
 }
 
 // 16 columns
-@media screen and (min-width: @breakpoint-16) {
+@media screen and (min-width: @breakpoint-sixteen-columns) {
   #grid {
     .column.one {
       &:nth-child(2n+1) {
