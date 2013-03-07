@@ -5,6 +5,7 @@
 *
 */
 
+// Translate int to string
  @0: zero;
  @1: one;
  @2: two;
@@ -23,10 +24,16 @@
 @15: fithteen;
 @16: sixteen;
 
+// Main mixin
 .setBase(@num) {
   .setCols(@num, @num, @@num, @@num);
+  @offset: @num - 1;
+  .setLeftOffset(@offset, @num, @@offset, @@num);
+  .setRightOffset(@offset, @num, @@offset, @@num);
+  .setNestedColumns(@offset, @num, @@offset, @@num);
 }
 
+// Recursice set cols
 .setCols(@col, @base, @colNamespace, @baseNamespace) when (@col > 0) {
   .@{colNamespace}-by-@{baseNamespace} {
     #grid > .width(@col, @base);
@@ -42,6 +49,7 @@
   }
 }
 
+// Recursive set offset
 .setLeftOffset(@col, @base, @colNamespace, @baseNamespace) when (@col > 0) {
   .left-offset-@{colNamespace}-by-@{baseNamespace} {
     #grid > .left-offset(@col, @base);
@@ -51,6 +59,43 @@
   @newColNamespace: @@newCol;
   .setLeftOffset(@newCol, @base, @newColNamespace, @baseNamespace);
 }
+
+.setRightOffset(@col, @base, @colNamespace, @baseNamespace) when (@col > 0) {
+  .right-offset-@{colNamespace}-by-@{baseNamespace} {
+    #grid > .left-offset(@col, @base);
+  }
+
+  @newCol: @col - 1;
+  @newColNamespace: @@newCol;
+  .setRightOffset(@newCol, @base, @newColNamespace, @baseNamespace);
+}
+
+.setNestedColumns(@col, @base, @colNamespace, @baseNamespace) when (@col > 1) {
+  .@{colNamespace}-by-@{baseNamespace} {
+    margin: 0;
+  }
+
+  @newCol: @col - 1;
+  @newColNamespace: @@newCol;
+  .setNestedColumns(@newCol, @base, @newColNamespace, @baseNamespace);
+}
+
+// &.three-by-four {
+//   .one-by-four {                   width       : 100%/3*1; }
+//   .two-by-four {                   width       : 100%/3*2; }
+
+//   .left-offset-one-by-four {       margin-left : 100%/3*1; }
+//   .left-offset-two-by-four {       margin-left : 100%/3*2; }
+//   .right-offset-one-by-four {      margin-right: 100%/3*1; }
+//   .right-offset-two-by-four {      margin-right: 100%/3*2; }
+// }
+
+// &.two-by-four {
+//   .one-by-four {                   width       : 100%/2*1; }
+
+//   .left-offset-one-by-four {       margin-left : 100%/2*1; }
+//   .right-offset-one-by-four {      margin-right: 100%/2*1; }
+// }
 
 /*
 
