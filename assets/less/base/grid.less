@@ -5,16 +5,65 @@
 *
 */
 
-`
-function numberToString(num) {
-  var numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fithteen, sixteen];
-  return numbers[num];
-}
-`
+ @0: zero;
+ @1: one;
+ @2: two;
+ @3: three;
+ @4: four;
+ @5: five;
+ @6: six;
+ @7: seven;
+ @8: eight;
+ @9: nine;
+@10: ten;
+@11: eleven;
+@12: twelve;
+@13: thirteen;
+@14: fourteen;
+@15: fithteen;
+@16: sixteen;
 
-.test:after {
-  content: `"'" + numberToString(1) + "'"`;
+.setBase(@num) {
+  .setCols(@num, @num, @@num, @@num);
 }
+
+.setCols(@col, @base, @colNamespace, @baseNamespace) when (@col > 0) {
+  .@{colNamespace}-by-@{baseNamespace} {
+    #grid > .width(@col, @base);
+  }
+
+  @newCol: @col - 1;
+  @newColNamespace: @@newCol;
+  .setCols(@newCol, @base, @newColNamespace, @baseNamespace);
+}
+.setCols(@col, @base, @colNamespace, @baseNamespace) when (@col = 0) {
+  .@{colNamespace}-by-@{baseNamespace} {
+    display: none;
+  }
+}
+
+.setLeftOffset(@col, @base, @colNamespace, @baseNamespace) when (@col > 0) {
+  .left-offset-@{colNamespace}-by-@{baseNamespace} {
+    #grid > .left-offset(@col, @base);
+  }
+
+  @newCol: @col - 1;
+  @newColNamespace: @@newCol;
+  .setLeftOffset(@newCol, @base, @newColNamespace, @baseNamespace);
+}
+
+/*
+
+
+TEST START */
+
+.setBase(4);
+
+/* TEST END
+
+
+*/
+
 
 @column: 100% / 16;
 
@@ -645,6 +694,7 @@ function numberToString(num) {
       .right-offset-three-by-sixteen {    margin-right : 100%/@cols*3; }
       .right-offset-four-by-sixteen {     margin-right : 100%/@cols*4; }
     }
+  }
 
 }
 
