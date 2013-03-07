@@ -7,10 +7,14 @@
     "img": {
       "source": "./assets/img/for-public",
       "destination": "./public",
-      "extensions": ["jpg", "jpeg", "png", "gif", "ico"]
+      "extensions": ["jpg", "jpeg", "png", "gif", "ico"],
+      "sprite": {
+        "source": "./assets/img/sprite",
+        "destination": "./public/img/sprites"
+      }
     },
     "js": {
-      "source": "./assets/js",
+      "manifest": "./assets/js/manifest.json",
       "destination": "./public/js"
     }
   }
