@@ -5,6 +5,17 @@
 *
 */
 
+`
+function numberToString(num) {
+  var numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fithteen, sixteen];
+  return numbers[num];
+}
+`
+
+.test:after {
+  content: `"'" + numberToString(1) + "'"`;
+}
+
 @column: 100% / 16;
 
 // Mixins
