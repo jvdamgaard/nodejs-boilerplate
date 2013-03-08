@@ -1,5 +1,5 @@
 exports.index = function(req, res){
   res.render('index', {
-    title: 'Node.js boilerplate'
+    title: 'Node.js kickstarter'
   });
 };

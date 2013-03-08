@@ -1,10 +1,10 @@
-.grey {
-  background: @color-background-dark;
+.box {
   height: 3*@line;
   margin-bottom: @line;
-}
-.black {
-  background: @color-font;
-  height: 3*@line;
-  margin-bottom: @line;
+  &.light {
+    background: @color-background-dark;
+  }
+  &.dark {
+    background: @color-font-light;
+  }
 }
