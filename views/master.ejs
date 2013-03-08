@@ -17,9 +17,7 @@
   <script src="<%= url('/js/head.js') %>"></script>
 </head>
 <body>
-  <div class="row">
-    <%-body -%>
-  </div>
+  <%-body -%>
   <script>
     jsRefs.unshift('<%= url("/js/master.js") %>');
     <% if (!production) { %>
