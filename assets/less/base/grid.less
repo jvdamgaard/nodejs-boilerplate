@@ -1,24 +1,10 @@
 /*
-*
-*  Four-column grid active
-*  -----------------------
-*
-*/
+ * Responsive grid system with 4, 8 and 16 fluid columns and fixed space between
+ */
+
+/* Vars */
 
 @column: 100% / 16;
-
-// Mixins
-#grid {
-  .width(@cols, @base) {
-    width: 16/@base * @cols * @column;
-  }
-  .left-offset( @cols, @base) {
-    margin-left: 16/@base * @cols * @column;
-  }
-  .right-offset(@cols, @base) {
-    margin-right: 16/@base * @cols * @column;
-  }
-}
 
 // Translate int to string
  @0: zero;
@@ -39,91 +25,98 @@
 @15: fithteen;
 @16: sixteen;
 
-// Main mixin
-.setBase(@num) {
-  .setCols(@num, @num, @@num, @@num);
-  @offset: @num - 1;
-  .setLeftOffset(@offset, @num, @@offset, @@num);
-  .setRightOffset(@offset, @num, @@offset, @@num);
-  .setNestedColumns(@offset, @num, @@offset, @@num);
+
+/* Mixins */
+
+#grid {
+  .width(@cols, @base) {
+    width: 16/@base * @cols * @column;
+  }
+  .left-offset( @cols, @base) {
+    margin-left: 16/@base * @cols * @column;
+  }
+  .right-offset(@cols, @base) {
+    margin-right: 16/@base * @cols * @column;
+  }
 }
 
+
+
+
+
 // Recursive set cols
-.setCols(@col, @base, @colNamespace, @baseNamespace) when (@col > 0) {
-  &.@{colNamespace}-by-@{baseNamespace} {
+.set-cols(@col, @base, @col-namespace, @base-namespace) when (@col > 0) {
+  &.@{col-namespace}-by-@{base-namespace} {
     #grid > .width(@col, @base);
   }
 
-  @newCol: @col - 1;
-  @newColNamespace: @@newCol;
-  .setCols(@newCol, @base, @newColNamespace, @baseNamespace);
+  @new-col: @col - 1;
+  @new-col-namespace: @@new-col;
+  .set-cols(@new-col, @base, @new-col-namespace, @base-namespace);
 }
-.setCols(@col, @base, @colNamespace, @baseNamespace) when (@col = 0) {
-  &.@{colNamespace}-by-@{baseNamespace} {
+.set-cols(@col, @base, @col-namespace, @base-namespace) when (@col = 0) {
+  &.@{col-namespace}-by-@{base-namespace} {
     display: none;
   }
 }
 
 // Recursive set offset
-.setLeftOffset(@col, @base, @colNamespace, @baseNamespace) when (@col > 0) {
-  &.left-offset-@{colNamespace}-by-@{baseNamespace} {
+.set-left-offset(@col, @base, @col-namespace, @base-namespace) when (@col > 0) {
+  &.left-offset-@{col-namespace}-by-@{base-namespace} {
     #grid > .left-offset(@col, @base);
   }
 
-  @newCol: @col - 1;
-  @newColNamespace: @@newCol;
-  .setLeftOffset(@newCol, @base, @newColNamespace, @baseNamespace);
+  @new-col: @col - 1;
+  @new-col-namespace: @@new-col;
+  .set-left-offset(@new-col, @base, @new-col-namespace, @base-namespace);
 }
-.setRightOffset(@col, @base, @colNamespace, @baseNamespace) when (@col > 0) {
-  &.right-offset-@{colNamespace}-by-@{baseNamespace} {
-    #grid > .left-offset(@col, @base);
+.set-right-offset(@col, @base, @col-namespace, @base-namespace) when (@col > 0) {
+  &.right-offset-@{col-namespace}-by-@{base-namespace} {
+    #grid > .right-offset(@col, @base);
   }
 
-  @newCol: @col - 1;
-  @newColNamespace: @@newCol;
-  .setRightOffset(@newCol, @base, @newColNamespace, @baseNamespace);
+  @new-col: @col - 1;
+  @new-col-namespace: @@new-col;
+  .set-right-offset(@new-col, @base, @new-col-namespace, @base-namespace);
 }
 
 // Recursive set nested columns
-.setNestedColumns(@col, @base, @colNamespace, @baseNamespace) when (@col > 1) {
-  &.@{colNamespace}-by-@{baseNamespace} {
-    @newCol: @col - 1;
-    @newColNamespace: @@newCol;
-    .setNestedCol(@newCol, @base, @col, @newColNamespace, @baseNamespace);
+.set-nested-columns(@col, @base, @col-namespace, @base-namespace) when (@col > 1) {
+  &.@{col-namespace}-by-@{base-namespace} {
+    @new-col: @col - 1;
+    @new-col-namespace: @@new-col;
+    .set-nested-col(@new-col, @base, @col, @new-col-namespace, @base-namespace);
   }
 
-  @newCols: @col - 1;
-  @newColsNamespace: @@newCols;
-  .setNestedColumns(@newCols, @base, @newColsNamespace, @baseNamespace);
+  @new-cols: @col - 1;
+  @new-cols-namespace: @@new-cols;
+  .set-nested-columns(@new-cols, @base, @new-cols-namespace, @base-namespace);
 }
 
-.setNestedCol(@col, @base, @nested, @colNamespace, @baseNamespace) when (@col > 0) {
-  .@{colNamespace}-by-@{baseNamespace} {
+.set-nested-col(@col, @base, @nested, @col-namespace, @base-namespace) when (@col > 0) {
+  .@{col-namespace}-by-@{base-namespace} {
     width: 100%/@nested*@col;
   }
-  .left-offset-@{colNamespace}-by-@{baseNamespace} {
+  .left-offset-@{col-namespace}-by-@{base-namespace} {
     margin-left: 100%/@nested*@col;
   }
-  .right-offset-@{colNamespace}-by-@{baseNamespace} {
+  .right-offset-@{col-namespace}-by-@{base-namespace} {
     margin-right: 100%/@nested*@col;
   }
 
-  @newCol: @col - 1;
-  @newColNamespace: @@newCol;
-  .setNestedCol(@newCol, @base, @col, @newColNamespace, @baseNamespace)
+  @new-col: @col - 1;
+  @new-col-namespace: @@new-col;
+  .set-nested-col(@new-col, @base, @col, @new-col-namespace, @base-namespace)
 }
 
-// columns {
-//   &.four-by-eight {
-
-//   }
-//   &-left-offset-two-by-eight {
-
-//   }
-//   &.four-by-eight {
-//     .two-by-eight {}
-//   }
-// }
+// Main mixin
+.set-base(@num) {
+  .set-cols(@num, @num, @@num, @@num);
+  @offset: @num - 1;
+  .set-left-offset(@offset, @num, @@offset, @@num);
+  .set-right-offset(@offset, @num, @@offset, @@num);
+  .set-nested-columns(@offset, @num, @@offset, @@num);
+}
 
 
 .row {
@@ -140,9 +133,18 @@
   display : block;
   height  : 100%;
 
-  .setBase(4);
-}
+  .set-base(4);
 
+  &.hide-four {
+    display: none;
+  }
+  &.only-eight {
+    display: none;
+  }
+  &.only-sixteen {
+    display: none;
+  }
+}
 
 /*
 *
@@ -155,7 +157,19 @@
 @media screen and (min-width: @breakpoint-eight-columns) {
 
   .column, .columns {
-    .setBase(8);
+    .set-base(8);
+    &.hide-four {
+      display: block;
+    }
+    &.hide-eight {
+      display: none;
+    }
+    &.only-four {
+      display: none;
+    }
+    &.only-eight {
+      display: block;
+    }
   }
 }
 
@@ -171,7 +185,20 @@
 @media screen and (min-width: @breakpoint-sixteen-columns) {
 
   .column, .columns {
-    .setBase(16);
+    .set-base(16);
+
+    &.hide-eight {
+      display: none;
+    }
+    &.hide-sixteen {
+      display: block;
+    }
+    &.only-eight {
+      display: none;
+    }
+    &.only-sixteen {
+      display: block;
+    }
   }
 }
 
