@@ -12,10 +12,6 @@
         "user": "jvdamgaard",
         "pass": "3kanter",
         "apikey": "e259d750cf5a0fb55ff32f1fb5ea2cf5"
-      },
-      "sprite": {
-        "source": "./assets/img/sprite",
-        "destination": "./public/img/sprites"
       }
     },
     "sprite": {
