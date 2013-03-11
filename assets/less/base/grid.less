@@ -1,139 +1,141 @@
 /*
  * Responsive grid system with 4, 8 and 16 fluid columns and fixed space between
  */
-
-/* Vars */
-
-@column: 100% / 16;
-
-// Translate int to string
- @0: zero;
- @1: one;
- @2: two;
- @3: three;
- @4: four;
- @5: five;
- @6: six;
- @7: seven;
- @8: eight;
- @9: nine;
-@10: ten;
-@11: eleven;
-@12: twelve;
-@13: thirteen;
-@14: fourteen;
-@15: fithteen;
-@16: sixteen;
-
-
-/* Mixins */
-
 #grid {
+
+  /* Vars */
+
+  @column-width: 100% / 16;
+
+  // Translate int to string
+   @0: zero;
+   @1: one;
+   @2: two;
+   @3: three;
+   @4: four;
+   @5: five;
+   @6: six;
+   @7: seven;
+   @8: eight;
+   @9: nine;
+  @10: ten;
+  @11: eleven;
+  @12: twelve;
+  @13: thirteen;
+  @14: fourteen;
+  @15: fithteen;
+  @16: sixteen;
+
+
+  /* Mixins */
+
   .width(@cols, @base) {
-    width: 16/@base * @cols * @column;
+    width: 16/@base * @cols * @column-width;
   }
   .left-offset( @cols, @base) {
-    margin-left: 16/@base * @cols * @column;
+    margin-left: 16/@base * @cols * @column-width;
   }
   .right-offset(@cols, @base) {
-    margin-right: 16/@base * @cols * @column;
-  }
-}
-
-
-
-
-
-// Recursive set cols
-.set-cols(@col, @base, @col-namespace, @base-namespace) when (@col > 0) {
-  &.@{col-namespace}-by-@{base-namespace} {
-    #grid > .width(@col, @base);
+    margin-right: 16/@base * @cols * @column-width;
   }
 
-  @new-col: @col - 1;
-  @new-col-namespace: @@new-col;
-  .set-cols(@new-col, @base, @new-col-namespace, @base-namespace);
-}
-.set-cols(@col, @base, @col-namespace, @base-namespace) when (@col = 0) {
-  &.@{col-namespace}-by-@{base-namespace} {
-    display: none;
-  }
-}
+  // Recursive set cols
+  .set-cols(@col, @base, @col-namespace, @base-namespace) when (@col > 0) {
+    &.@{col-namespace}-by-@{base-namespace} {
+      #grid > .width(@col, @base);
+    }
 
-// Recursive set offset
-.set-left-offset(@col, @base, @col-namespace, @base-namespace) when (@col > 0) {
-  &.left-offset-@{col-namespace}-by-@{base-namespace} {
-    #grid > .left-offset(@col, @base);
-  }
-
-  @new-col: @col - 1;
-  @new-col-namespace: @@new-col;
-  .set-left-offset(@new-col, @base, @new-col-namespace, @base-namespace);
-}
-.set-right-offset(@col, @base, @col-namespace, @base-namespace) when (@col > 0) {
-  &.right-offset-@{col-namespace}-by-@{base-namespace} {
-    #grid > .right-offset(@col, @base);
-  }
-
-  @new-col: @col - 1;
-  @new-col-namespace: @@new-col;
-  .set-right-offset(@new-col, @base, @new-col-namespace, @base-namespace);
-}
-
-// Recursive set nested columns
-.set-nested-columns(@col, @base, @col-namespace, @base-namespace) when (@col > 1) {
-  &.@{col-namespace}-by-@{base-namespace} {
     @new-col: @col - 1;
     @new-col-namespace: @@new-col;
-    .set-nested-col(@new-col, @base, @col, @new-col-namespace, @base-namespace);
+    .set-cols(@new-col, @base, @new-col-namespace, @base-namespace);
+  }
+  .set-cols(@col, @base, @col-namespace, @base-namespace) when (@col = 0) {
+    &.@{col-namespace}-by-@{base-namespace} {
+      display: none;
+    }
   }
 
-  @new-cols: @col - 1;
-  @new-cols-namespace: @@new-cols;
-  .set-nested-columns(@new-cols, @base, @new-cols-namespace, @base-namespace);
+  // Recursive set offset
+  .set-left-offset(@col, @base, @col-namespace, @base-namespace) when (@col > 0) {
+    &.left-offset-@{col-namespace}-by-@{base-namespace} {
+      #grid > .left-offset(@col, @base);
+    }
+
+    @new-col: @col - 1;
+    @new-col-namespace: @@new-col;
+    .set-left-offset(@new-col, @base, @new-col-namespace, @base-namespace);
+  }
+  .set-right-offset(@col, @base, @col-namespace, @base-namespace) when (@col > 0) {
+    &.right-offset-@{col-namespace}-by-@{base-namespace} {
+      #grid > .right-offset(@col, @base);
+    }
+
+    @new-col: @col - 1;
+    @new-col-namespace: @@new-col;
+    .set-right-offset(@new-col, @base, @new-col-namespace, @base-namespace);
+  }
+
+  // Recursive set nested columns
+  .set-nested-columns(@col, @base, @col-namespace, @base-namespace) when (@col > 1) {
+    &.@{col-namespace}-by-@{base-namespace} {
+      @new-col: @col - 1;
+      @new-col-namespace: @@new-col;
+      .set-nested-col(@new-col, @base, @col, @new-col-namespace, @base-namespace);
+    }
+
+    @new-cols: @col - 1;
+    @new-cols-namespace: @@new-cols;
+    .set-nested-columns(@new-cols, @base, @new-cols-namespace, @base-namespace);
+  }
+
+  .set-nested-col(@col, @base, @nested, @col-namespace, @base-namespace) when (@col > 0) {
+    .@{col-namespace}-by-@{base-namespace} {
+      width: 100%/@nested*@col;
+    }
+    .left-offset-@{col-namespace}-by-@{base-namespace} {
+      margin-left: 100%/@nested*@col;
+    }
+    .right-offset-@{col-namespace}-by-@{base-namespace} {
+      margin-right: 100%/@nested*@col;
+    }
+
+    @new-col: @col - 1;
+    @new-col-namespace: @@new-col;
+    .set-nested-col(@new-col, @base, @col, @new-col-namespace, @base-namespace)
+  }
+
+  // Main mixin
+  .set-base(@num) {
+    .set-cols(@num, @num, @@num, @@num);
+    @offset: @num - 1;
+    .set-left-offset(@offset, @num, @@offset, @@num);
+    .set-right-offset(@offset, @num, @@offset, @@num);
+    .set-nested-columns(@offset, @num, @@offset, @@num);
+  }
 }
 
-.set-nested-col(@col, @base, @nested, @col-namespace, @base-namespace) when (@col > 0) {
-  .@{col-namespace}-by-@{base-namespace} {
-    width: 100%/@nested*@col;
-  }
-  .left-offset-@{col-namespace}-by-@{base-namespace} {
-    margin-left: 100%/@nested*@col;
-  }
-  .right-offset-@{col-namespace}-by-@{base-namespace} {
-    margin-right: 100%/@nested*@col;
-  }
 
-  @new-col: @col - 1;
-  @new-col-namespace: @@new-col;
-  .set-nested-col(@new-col, @base, @col, @new-col-namespace, @base-namespace)
-}
 
-// Main mixin
-.set-base(@num) {
-  .set-cols(@num, @num, @@num, @@num);
-  @offset: @num - 1;
-  .set-left-offset(@offset, @num, @@offset, @@num);
-  .set-right-offset(@offset, @num, @@offset, @@num);
-  .set-nested-columns(@offset, @num, @@offset, @@num);
-}
+
+
+
 
 
 .row {
-  margin: 0 @line/2;
+  margin: 0 @line-height/2;
   .clearfix;
   .row {
-    margin: 0 -@line/2;
+    margin: 0 -@line-height/2;
   }
 }
 
 .column, .columns {
-  padding : 0 @line/2;
+  padding : 0 @line-height/2;
   float   : left;
   display : block;
   height  : 100%;
 
-  .set-base(4);
+  #grid > .set-base(4);
 
   &.hide-four {
     display: none;
@@ -154,10 +156,10 @@
 */
 
 /* @media screen and (min-width: 700px) */
-@media screen and (min-width: @breakpoint-eight-columns) {
+@media screen and (min-width: @eight-columns-breakpoint) {
 
   .column, .columns {
-    .set-base(8);
+    #grid > .set-base(8);
     &.hide-four {
       display: block;
     }
@@ -182,10 +184,10 @@
 */
 
 /* @media screen and (min-width: 1440px) */
-@media screen and (min-width: @breakpoint-sixteen-columns) {
+@media screen and (min-width: @sixteen-columns-breakpoint) {
 
   .column, .columns {
-    .set-base(16);
+    #grid > .set-base(16);
 
     &.hide-eight {
       display: none;
@@ -229,10 +231,10 @@
     padding: 0;
 
     &:nth-child(4n+1) {
-      padding-left: @line/2;
+      padding-left: @line-height/2;
     }
     &:nth-child(4n) {
-      padding-right: @line/2;
+      padding-right: @line-height/2;
     }
   }
   .fill {
@@ -242,7 +244,7 @@
     .transition(~"background 1s ease-in-out");
 
     .show-horizontal-line {
-        height: @line/2;
+        height: @line-height/2;
         border-bottom: 1px solid rgba(255,0,0,0);
     }
 
@@ -262,28 +264,28 @@
 }
 
 // 8 columns
-@media screen and (min-width: @breakpoint-eight-columns) {
+@media screen and (min-width: @eight-columns-breakpoint) {
   #grid {
     .column.one {
       &:nth-child(4n+2) {
-        padding-right: @line/2;
+        padding-right: @line-height/2;
       }
       &:nth-child(4n+3) {
-        padding-left: @line/2;
+        padding-left: @line-height/2;
       }
     }
   }
 }
 
 // 16 columns
-@media screen and (min-width: @breakpoint-sixteen-columns) {
+@media screen and (min-width: @sixteen-columns-breakpoint) {
   #grid {
     .column.one {
       &:nth-child(2n+1) {
-        padding-right: @line/2;
+        padding-right: @line-height/2;
       }
       &:nth-child(2n+2) {
-        padding-left: @line/2;
+        padding-left: @line-height/2;
       }
     }
   }
