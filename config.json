@@ -18,6 +18,10 @@
         "destination": "./public/img/sprites"
       }
     },
+    "sprite": {
+      "source": "./assets/sprite",
+      "destination": "./public/img/sprites"
+    },
     "js": {
       "manifest": "./assets/js/manifest.json",
       "destination": "./public/js"
