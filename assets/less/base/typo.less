@@ -8,28 +8,29 @@
 body {
   #typo > .normal;
   #typo > #font > .normal;
+  font-size: @font-size;
 }
 
 h1 {
   #typo > .biggest;
   #typo > #font > .header;
-  margin: @line/2 0 @line/2;
+  margin: @line-height/2 0 @line-height;
 }
 
 h2 {
   #typo > .bigger;
   #typo > #font > .header;
-  margin: @line*2 0 0;
+  margin: @line-height*1.5 0 @line-height*0.5;
 }
 
 h3, h4 {
   #typo > .normal;
   font-weight: bold;
-  margin: @line 0 0;
+  margin: @line-height 0 0;
 }
 
 p {
-  margin: 0 0 @line/2;
+  margin: 0 0 @line-height/2;
 }
 
 small {
@@ -37,9 +38,21 @@ small {
 }
 
 a {
-  color: @color-font-light;
-  text-decoration: underline;
+  color: @primary-color;
+  text-decoration: none;
   &:hover {
-    color: @color-font;
+    text-decoration: underline;
+  }
+}
+
+@media screen and (min-width: @eight-columns-breakpoint) {
+  body {
+    font-size: @font-size + 1;
+  }
+}
+
+@media screen and (min-width: @sixteen-columns-breakpoint) {
+  body {
+    font-size: @font-size + 2;
   }
 }
