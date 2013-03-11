@@ -16,7 +16,7 @@
     },
     "sprite": {
       "source": "./assets/sprite",
-      "destination": "./public/img/sprites"
+      "destination": "./public/img/sprite.png"
     },
     "js": {
       "manifest": "./assets/js/manifest.json",
