@@ -1,10 +1,22 @@
 .box {
-  height: 3*@line-height;
+  height: @line-height;
   margin-bottom: @line-height;
   &.light {
     background: @dark-background-color;
   }
   &.dark {
     background: @light-font-color;
+  }
+}
+
+@media screen and (min-width: @eight-columns-breakpoint) {
+  .box {
+    height: 2*@line-height;
+  }
+}
+
+@media screen and (min-width: @sixteen-columns-breakpoint) {
+  .box {
+    height: 3*@line-height;
   }
 }

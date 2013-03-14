@@ -13,15 +13,15 @@ body {
 }
 
 h1 {
-  #typo > .biggest;
+  #typo > .bigger;
   #typo > #font > .header;
-  margin: @line-height/2 0 @line-height;
+  margin: @line-height/2 0 @line-height/2;
 }
 
 h2 {
-  #typo > .bigger;
+  #typo > .big;
   #typo > #font > .header;
-  margin: @line-height*1.5 0 @line-height*0.5;
+  margin: @line-height 0 @line-height*0.5;
 }
 
 h3, h4 {
@@ -50,6 +50,9 @@ a {
   body {
     font-size: @font-size + 1;
   }
+  h1 {
+    #typo > .biggest;
+  }
 }
 
 @media screen and (min-width: @sixteen-columns-breakpoint) {
@@ -58,5 +61,11 @@ a {
   }
   h1 {
     #typo > .huge;
+    margin-bottom: @line-height*2;
+  }
+  h2 {
+    #typo > .bigger;
+    margin-bottom: @line-height;
+    margin-top: 1.5*@line-height;
   }
 }
