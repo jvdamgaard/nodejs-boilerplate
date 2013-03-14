@@ -1,8 +1,8 @@
 {
-  "name": "myApp",
-  "version": "0.0.1",
+  "name": "node-kickstarter",
+  "version": "0.1.0",
   "author": "Jakob Damgaard <jakob.viskum.damgaard@gmail.com>",
-  "description": "Description",
+  "description": "Get startet with your next website project in Node.js with a blink of an eye",
   "contributors": [
     {
       "name": "Jakob Damgaard",
@@ -15,10 +15,10 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jvdamgaard/foetexmobweb.git"
+    "url": "https://github.com/jvdamgaard/node-kickstarter.git"
   },
   "dependencies": {
-    "express": "3.0.x",
+    "express": "3.1.x",
     "uglify-js": "2.2.x",
     "ejs": "0.8.x",
     "ejs-locals": "1.0.x",
@@ -31,9 +31,9 @@
     "underscore": "1.4.x",
     "kraken": "0.1.x"
   },
-  "subdomain": "yourapp",
-  "homepage": "http://your.domain.com",
+  "license": "MIT",
   "engines": {
     "node": "0.8.x"
-  }
+  },
+  "subdomain": "node-kickstarter"
 }
