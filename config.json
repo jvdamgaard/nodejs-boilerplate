@@ -16,7 +16,9 @@
     },
     "sprite": {
       "source": "./assets/sprite",
-      "destination": "./public/img/sprite.png"
+      "destination": "./public/img/sprite.png",
+      "offset": 10,
+      "extensions": ["jpg", "jpeg", "png", "gif"]
     },
     "js": {
       "manifest": "./assets/js/manifest.json",
