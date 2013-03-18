@@ -17,7 +17,7 @@
     "sprite": {
       "source": "./assets/sprite",
       "destination": "./public/img/sprite.png",
-      "offset": 10,
+      "offset": 5,
       "extensions": ["jpg", "jpeg", "png", "gif"]
     },
     "js": {

@@ -1,7 +1,53 @@
-// Mixins
+#sprite {
+  .pseudo-class(@name, @pseudo, @width, @height, @x-offset) {
+    @n: e(@name);
+    @p: e(@pseudo);
+    .sprite.@{n}@{p}:before {
+      #sprite > .set-type(@width, @height, @x-offset);
+    }
+  }
 
+  .css-class(@name, @width, @height, @x-offset) {
+    @n: e(@name);
+    .sprite.@{n}:before {
+      #sprite > .set-type(@width, @height, @x-offset);
+    }
+  }
 
-.sprite {
-  background-image: url(/img/sprite.png);
+  .set-type(@width, @height, @x-offset) {
+      width: @width*1px;
+      height: @height*1px;
+      margin-left: @width/-2px;
+      margin-top: @height/-2px;
+      background-position: floor(@x-offset/-1px) 0px;
+  }
+
+  .set-background(@url) {
+    .sprite:before {
+      background-image: url(@url);
+    }
+  }
+
+  .set-retina-background(@url, @width, @height) {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+      .sprite:before {
+        background-image: url(@url);
+        background-size: @width*1px @height*1px;
+      }
+    }
+  }
+
+  .init() {
+    .sprite {
+      position: relative;
+      &:before { // center align sprite image in container
+        content:"";
+        position:absolute;
+        left:50%;
+        top:50%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
 
 }
