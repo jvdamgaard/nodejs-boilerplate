@@ -5,7 +5,7 @@
       "destination": "./public/css/style.css"
     },
     "img": {
-      "source": "./assets/img/for-public",
+      "source": "./assets/images",
       "destination": "./public",
       "extensions": ["jpg", "jpeg", "png", "gif", "ico"],
       "KrakenAPI": {
@@ -21,7 +21,7 @@
       "extensions": ["jpg", "jpeg", "png", "gif"]
     },
     "js": {
-      "manifest": "./assets/js/manifest.json",
+      "manifest": "./assets/javascripts/manifest.json",
       "destination": "./public/js"
     }
   }
