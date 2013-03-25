@@ -31,6 +31,10 @@
     "underscore": "1.4.x",
     "kraken": "0.1.x"
   },
+  "devDependencies": {
+    "mocha": "1.8.x",
+    "expect.js": "0.2.x"
+  },
   "license": "MIT",
   "engines": {
     "node": "0.8.x"
