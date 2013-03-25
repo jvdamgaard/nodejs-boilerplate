@@ -22,8 +22,6 @@
     jsRefs.unshift('<%= url("/js/master.js") %>');
     <% if (!production) { %>
       jsRefs.unshift('<%= url("/js/development.js") %>');
-    <% } else { %>
-      jsRefs.unshift('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
     <% } %>
     Modernizr.load(jsRefs);
   </script>

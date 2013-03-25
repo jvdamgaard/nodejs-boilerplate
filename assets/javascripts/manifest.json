@@ -1,6 +1,5 @@
 {
   "development.js": [
-    "development/jquery.js",
     "development/grid.js"],
   "head.js": [
     "head/Modernizr.js",
@@ -8,10 +7,11 @@
     "head/inheritance.js",
     "head/jsrefs.js"],
   "master.js": [
+    "development/jqmobi.js",
     "master/FastClick.js",
     "master/Global.js",
     "master/MBP.js",
-    "master/jquery.touch.js",
+    "master/jq.touch.js",
     "master/touch.js",
     "master/master.js"]
 }
