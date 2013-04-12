@@ -1,17 +1,31 @@
 {
   "development.js": [
-    "development/grid.js"],
+    "development/grid.js"
+  ],
   "head.js": [
     "head/Modernizr.js",
     "head/fix.js",
     "head/inheritance.js",
-    "head/jsrefs.js"],
+    "head/jsrefs.js"
+  ],
   "master.js": [
-    "development/jqmobi.js",
+    "master/jqmobi.js",
     "master/FastClick.js",
     "master/Global.js",
     "master/MBP.js",
     "master/jq.touch.js",
     "master/touch.js",
-    "master/master.js"]
+    "master/master.js"
+  ],
+  "tests.js": [
+    "testframework/test/expect-mocha.js"
+  ],
+  "testframework.js": [
+    "testframework/expect.js",
+    "testframework/mocha.js",
+    "testframework/setup-testframework.js"
+  ],
+  "start-tests.js": [
+    "testframework/start-tests.js"
+  ]
 }
