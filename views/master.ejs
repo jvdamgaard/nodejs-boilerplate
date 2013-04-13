@@ -19,10 +19,10 @@
 <body>
   <%-body -%>
   <script>
-    jsRefs.unshift('<%= url("/js/master.js") %>');
     <% if (!production) { %>
       jsRefs.unshift('<%= url("/js/development.js") %>');
     <% } %>
+    jsRefs.unshift('<%= url("/js/master.js") %>');
     Modernizr.load(jsRefs);
   </script>
 </body>

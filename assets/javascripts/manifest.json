@@ -9,7 +9,7 @@
     "head/jsrefs.js"
   ],
   "master.js": [
-    "master/jqmobi.js",
+    "master/jquery.js",
     "master/FastClick.js",
     "master/Global.js",
     "master/MBP.js",

@@ -3,3 +3,9 @@ exports.index = function(req, res){
     title: 'Node.js kickstarter'
   });
 };
+
+exports.test = function(req, res){
+  res.render('test', {
+    title: 'Test site'
+  });
+};
