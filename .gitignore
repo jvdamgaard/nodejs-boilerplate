@@ -1,8 +1,7 @@
 # Compiled files in boilerplate #
 ######################
-public/css
-public/img
-public/js
+public
+assets/less/sprites.less
 
 # Nodejs #
 ######################
