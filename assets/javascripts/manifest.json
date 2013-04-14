@@ -18,14 +18,14 @@
     "master/master.js"
   ],
   "tests.js": [
-    "testframework/test/expect-mocha.js"
+    "test/expect-mocha.js"
   ],
   "testframework.js": [
-    "testframework/expect.js",
-    "testframework/mocha.js",
-    "testframework/setup-testframework.js"
+    "test/framework/expect.js",
+    "test/framework/mocha.js",
+    "test/framework/setup-testframework.js"
   ],
   "start-tests.js": [
-    "testframework/start-tests.js"
+    "test/framework/start-tests.js"
   ]
 }
