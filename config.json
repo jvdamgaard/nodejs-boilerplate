@@ -23,6 +23,12 @@
     "js": {
       "manifest": "./assets/javascripts/manifest.json",
       "destination": "./public/js"
-    }
+    },
+    "static": [
+      {
+        "source": "./assets/font",
+        "destination": "./public/font"
+      }
+    ]
   }
 }
