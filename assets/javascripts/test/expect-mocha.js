@@ -2,6 +2,7 @@ describe('Mocha and Expectjs', function () {
   it('should be running', function () {
     expect(true).to.be(true);
   });
+<<<<<<< HEAD
 });
 
 describe('DSG stores api', function () {
@@ -11,4 +12,6 @@ describe('DSG stores api', function () {
       done();
     });
   });
+=======
+>>>>>>> Css for browser tests
 });
