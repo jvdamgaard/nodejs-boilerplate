@@ -1,7 +1,9 @@
 <% layout('master') -%>
 <div class="row">
-  <div id="mocha" class="four-by-four eight-by-sixteen columns"></div>
+  <div id="mocha" class="four-by-four eight-by-sixteen left-offset-four-by-sixteen columns"></div>
   <script>
+    // Include all modules to test
+
     jsRefs.push('<%= url("/js/testframework.js") %>');
     jsRefs.push('<%= url("/js/tests.js") %>');
     jsRefs.push('<%= url("/js/start-tests.js") %>');

@@ -1,5 +1,6 @@
 #mocha {
-  padding: 60px 50px;
+
+  font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   ul, li {
     margin: 0;
@@ -12,11 +13,13 @@
 
   h1, h2 {
     margin: 0;
+    line-height: 1;
     #typo > #font > .normal;
   }
 
   h1 {
     margin-top: 15px;
+    margin-bottom: 5px;
     font-size: 1em;
     font-weight: 200;
     a {
@@ -41,9 +44,10 @@
     font-size: 12px;
     font-weight: normal;
     cursor: pointer;
+    line-height: 1.5;
   }
 
-  .suite {
+  .suite .suite {
     margin-left: 15px;
   }
 
@@ -186,11 +190,8 @@
   }
 
   #mocha-stats {
-    position: fixed;
-    top: 15px;
-    right: 10px;
+    margin: 15px 0 30px;
     font-size: 12px;
-    margin: 0;
     color: #888;
   }
 
