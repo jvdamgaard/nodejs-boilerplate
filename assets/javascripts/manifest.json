@@ -18,7 +18,9 @@
     "master/master.js"
   ],
   "tests.js": [
-    "test/expect-mocha.js"
+    "test/expect-mocha.js",
+    "head/test/fix.js",
+    "head/test/inheritance.js"
   ],
   "testframework.js": [
     "test/framework/expect.js",
